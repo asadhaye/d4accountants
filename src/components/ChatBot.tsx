@@ -18,12 +18,17 @@ export default function ChatBot() {
     input,
     handleInputChange,
     handleSubmit: originalHandleSubmit,
+    isLoading: chatIsLoading,
   } = useChat({
     api: "/api/chat",
     onError: (error) => {
       console.error("Chat error:", error);
       setError("Failed to send message. Please try again.");
       setIsLoading(false);
+    },
+    onFinish: () => {
+      setIsLoading(false);
+      setError(null);
     },
   });
   const chatRef = useRef<HTMLDivElement>(null);
@@ -46,13 +51,12 @@ export default function ChatBot() {
       return;
     }
 
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       await originalHandleSubmit(e);
     } catch (err) {
       console.error("Failed to send message:", err);
       setError("An error occurred while sending your message. Please try again.");
-    } finally {
       setIsLoading(false);
     }
   };

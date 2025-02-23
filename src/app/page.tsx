@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { default as ChatBot } from "@/components/ChatBot";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { motion } from "framer-motion";
 import {
@@ -266,7 +265,6 @@ export default function Home() {
             <LeadCaptureForm service="tax-planning" />
 
             {/* Chat Bot */}
-            <ChatBot />
         </motion.div>
     );
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
@@ -10,6 +9,8 @@ import { fadeIn, formField, staggerContainer } from "@/lib/animations";
 import { handleError } from "@/lib/error-handling";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { BaseInput, commonInputClasses } from "@/components/ui/base-input";
+import { cn } from "@/lib/utils";
 
 interface LeadCaptureFormProps {
   service: "tax-planning" | "bookkeeping" | "financial-advisory";
@@ -117,13 +118,13 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
               >
                 Full Name
               </label>
-              <Input
+              <BaseInput
                 id="name"
                 name="name"
                 placeholder="Your Name"
                 required
                 disabled={isSubmitting}
-                className={`w-full ${errors.name ? "border-red-500" : ""}`}
+                error={!!errors.name}
                 aria-invalid={errors.name ? "true" : "false"}
                 aria-describedby={errors.name ? "name-error" : undefined}
               />
@@ -141,16 +142,16 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
               >
                 Email Address
               </label>
-              <Input
+              <BaseInput
                 id="email"
                 name="email"
                 type="email"
                 placeholder="Email Address"
                 required
                 disabled={isSubmitting}
-                className={`w-full ${errors.email ? "border-red-500" : ""}`}
+                error={!!errors.email}
                 aria-invalid={errors.email ? "true" : "false"}
-                aria-describedby={errors.email ? "email-error" : undefined} // Fixed typo
+                aria-describedby={errors.email ? "email-error" : undefined}
               />
               {errors.email && (
                 <p id="email-error" className="mt-1 text-sm text-red-500">
@@ -172,7 +173,11 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
                 value={phone}
                 onChange={(value) => setPhone(value || "")}
                 disabled={isSubmitting}
-                className={`w-full ${errors.phone ? "border-red-500" : ""}`}
+                className={cn("flex", commonInputClasses)}
+                inputClassName={cn(
+                  commonInputClasses,
+                  errors.phone && "border-red-500"
+                )}
                 aria-invalid={errors.phone ? "true" : "false"}
                 aria-describedby={errors.phone ? "phone-error" : undefined}
               />

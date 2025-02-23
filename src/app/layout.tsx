@@ -1,104 +1,74 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
-import { default as Header } from "@/components/Header";
-import { default as Footer } from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster";
+import { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
 });
-
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(APP_URL),
-  title: "D4 Accountants - Professional Accounting Services",
-  description:
-    "Expert accounting services for businesses and individuals, including tax planning, bookkeeping, and financial advisory.",
-  keywords:
-    "accountants, tax services, bookkeeping, financial advisory, business accounting",
-  authors: [{ name: "D4 Accountants" }],
-  robots: "index, follow",
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "D4 Accountants",
-    startupImage: [
-      {
-        url: "/icon-192x192.png",
-        media:
-          "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
-      },
-      {
-        url: "/icon-512x512.png",
-        media:
-          "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)",
-      },
-    ],
+  metadataBase: new URL('https://d4accountants.com'),
+  title: {
+    default: "D4 Accountants | Professional Accounting Services",
+    template: "%s | D4 Accountants"
   },
+  description: "Professional accounting services including tax planning, bookkeeping, and financial advisory for businesses in the UK.",
+  keywords: ["accounting", "tax planning", "bookkeeping", "financial advisory", "UK accountants"],
+  authors: [{ name: "D4 Accountants" }],
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: APP_URL,
-    title: "D4 Accountants - Professional Accounting Services",
-    description:
-      "Expert accounting services for businesses and individuals, specializing in tax planning, bookkeeping, and financial advisory.",
+    locale: "en_GB",
+    url: "https://d4accountants.com",
     siteName: "D4 Accountants",
-    images: [
-      {
-        url: "/icon-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "D4 Accountants Logo",
-      },
-    ],
+    images: [{
+      url: "/images/og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "D4 Accountants - Professional Accounting Services"
+    }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "D4 Accountants",
-    description:
-      "Expert accounting services for businesses and individuals, specializing in tax planning, bookkeeping, and financial advisory.",
-    images: ["/icon-512x512.png"],
+    images: ["/images/twitter-image.jpg"],
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png" }
+    ],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    google: "your-google-site-verification",
   },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export const viewport: Viewport = {
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${robotoMono.variable} min-h-screen bg-background antialiased`}
-      >
-        <main className="relative flex min-h-screen flex-col">
-          <Header />
-          {children}
-          <Footer />
-        </main>
-        <Toaster />
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen bg-background antialiased">
+        {children}
       </body>
     </html>
   );
