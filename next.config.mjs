@@ -1,28 +1,28 @@
-// @ts-check
-
-import withPWA from '@ducanh2912/next-pwa';
-
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const config = {
   webpack: (config, { isServer }) => {
+    // Prevent server-side native module loading attempts
     if (!isServer) {
       config.resolve.fallback = {
         fs: false,
         path: false,
-        child_process: false
+        child_process: false,
+        crypto: false,
+        stream: false,
+        os: false,
       };
     }
+
+    // Remove node-loader configuration as it's not needed for browser-only usage
+    config.module.rules = config.module.rules.filter(rule => 
+      rule.use !== 'node-loader'
+    );
+
     return config;
   },
-  output: 'standalone'
+  serverExternalPackages: ['@xenova/transformers'],
+  output: 'standalone',
 };
 
-const pwaConfig = withPWA({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development'
-});
-
-// @ts-ignore - Type mismatch between Next.js versions
-export default pwaConfig(config);
+export default config;

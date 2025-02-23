@@ -18,7 +18,6 @@ export default function ChatBot() {
     input,
     handleInputChange,
     handleSubmit: originalHandleSubmit,
-    isLoading: chatIsLoading,
   } = useChat({
     api: "/api/chat",
     onError: (error) => {

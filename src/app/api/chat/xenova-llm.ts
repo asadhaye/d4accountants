@@ -1,76 +1,53 @@
-import { Pipeline } from "@xenova/transformers";
-import { BaseChatModel } from "@langchain/core/language_models/chat_models";
-import { BaseMessage, ChatResult, Generation } from "@langchain/core/messages";
-import { ChatGenerationChunk, GenerationChunk } from "@langchain/core/outputs";
+import { pipeline, env, Text2TextGenerationPipeline } from '@xenova/transformers';
 
-export class XenovaLLMWrapper extends BaseChatModel {
-  lc_namespace = ["xenova", "chat_model"];
+// Configure to use web environment
+env.useBrowserCache = true;
+env.useCustomCache = false;
 
-  constructor(
-    private pipeline: Pipeline,
-    private options = { 
-      maxTokens: 500,
-      temperature: 0.7,
-      topP: 0.95,
-      repetitionPenalty: 1.1
+let chatPipeline: Text2TextGenerationPipeline | null = null;
+
+const MAX_CHAT_TOKENS = 500;
+const TEMPERATURE = 0.7;
+const TOP_P = 0.9;
+
+interface GenerationOutput {
+  generated_text: string;
+}
+
+/**
+ * Generates a response using the Mistral-7b-instruct-v0.2 text generation model.
+ * @param prompt The input prompt for the model.
+ * @returns A promise that resolves to the generated text response.
+ * @throws {Error} If the model fails to generate a response.
+ */
+export async function generateResponse(prompt: string): Promise<string> {
+  try {
+    if (!chatPipeline) {
+      console.log('Loading the text generation pipeline...');
+      chatPipeline = await pipeline(
+        'text2text-generation',
+        'Xenova/mistral-7b-instruct-v0.2',
+        {
+          revision: 'default',
+          quantized: true
+        }
+      );
+      console.log('Text generation pipeline loaded.');
     }
-  ) {
-    super({});
-  }
 
-  async _generate(
-    messages: BaseMessage[],
-    options: this["ParsedCallOptions"] = {}
-  ): Promise<ChatResult> {
-    try {
-      const prompt = messages.map((m) => `${m.type}: ${m.content}`).join("\n");
-      
-      const result = await this.pipeline(prompt, {
-        max_new_tokens: options.maxTokens ?? this.options.maxTokens,
-        temperature: options.temperature ?? this.options.temperature,
-        top_p: this.options.topP,
-        repetition_penalty: this.options.repetitionPenalty,
-        do_sample: true,
-      });
+    const output = await chatPipeline(prompt, {
+      max_length: MAX_CHAT_TOKENS,
+      temperature: TEMPERATURE,
+      top_p: TOP_P,
+    }) as GenerationOutput[];
 
-      let text: string;
-      if (Array.isArray(result)) {
-        text = result[0].generated_text;
-      } else if (typeof result === 'object' && 'generated_text' in result) {
-        text = result.generated_text;
-      } else {
-        throw new Error("Invalid pipeline response format");
-      }
-
-      const generation: Generation = {
-        text,
-        generationInfo: { ...options },
-      };
-
-      return {
-        generations: [generation],
-      };
-    } catch (error) {
-      console.error("Generation error:", error);
-      throw error;
+    if (!output?.[0]?.generated_text) {
+      throw new Error('Failed to generate response');
     }
-  }
 
-  async *_streamResponseChunks(
-    messages: BaseMessage[],
-    options: this["ParsedCallOptions"],
-    runManager?: CallbackManagerForLLMRun
-  ): AsyncGenerator<ChatGenerationChunk> {
-    const response = await this._generate(messages, options);
-    for (const generation of response.generations) {
-      yield new ChatGenerationChunk({
-        text: generation.text,
-        generationInfo: generation.generationInfo,
-      });
-    }
-  }
-
-  _llmType(): string {
-    return "xenova-chat";
+    return output[0].generated_text;
+  } catch (error: unknown) {
+    console.error('Error generating response:', error);
+    throw error instanceof Error ? error : new Error('Unknown error occurred');
   }
 }

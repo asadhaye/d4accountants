@@ -1,6 +1,8 @@
+// src/app/layout.tsx
 import { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
 import "./globals.css";
+import { ServiceWorkerRegister } from "@/components/service-worker-register";  // Updated import path
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,7 +51,19 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "D4 Accountants",
+  },
+  formatDetection: {
+    telephone: true,
+    date: true,
+    address: true,
+    email: true,
+    url: true,
+  },
 };
 
 export const viewport: Viewport = {
@@ -69,6 +83,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-background antialiased">
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

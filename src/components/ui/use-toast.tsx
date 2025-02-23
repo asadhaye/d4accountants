@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Toast, ToastActionElement, ToastProps } from "./toast";
+import type { ToastActionElement, ToastProps } from "./toast";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -103,6 +103,12 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">;
 
+function genId() {
+  let count = 0; // Moved inside to avoid global state
+  count = (count + 1) % Number.MAX_VALUE;
+  return count.toString();
+}
+
 function toast({ ...props }: Toast) {
   const id = genId();
 
@@ -131,12 +137,6 @@ function toast({ ...props }: Toast) {
     dismiss,
     update,
   };
-}
-
-function genId() {
-  let count = 0; // Moved inside to avoid global state
-  count = (count + 1) % Number.MAX_VALUE;
-  return count.toString();
 }
 
 function useToast() {

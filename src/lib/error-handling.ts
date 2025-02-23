@@ -58,5 +58,5 @@ export async function withRetry<T>(
     }
   }
   
-  throw lastError;
+  throw new Error('Operation failed after maximum retry attempts');
 }
