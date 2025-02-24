@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
+import { Document } from "mongoose";
 
-export interface Lead {
-  _id?: ObjectId;
+export interface BaseLead {
   name: string;
   email: string;
   phone: string;
@@ -9,6 +9,12 @@ export interface Lead {
   message?: string;
   createdAt: Date;
 }
+
+export interface MongoLead extends BaseLead {
+  _id?: ObjectId;
+}
+
+export interface MongooseLead extends BaseLead, Document {}
 
 export interface ChatMessage {
   _id?: ObjectId;
@@ -22,3 +28,5 @@ export const collections = {
   leads: "leads",
   chatMessages: "chatMessages",
 } as const;
+
+export type ServiceType = "tax-planning" | "bookkeeping" | "financial-advisory";

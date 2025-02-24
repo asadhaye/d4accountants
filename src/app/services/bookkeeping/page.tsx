@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
+import ServiceLayout from '@/components/shared/service-layout';
 import { motion } from "framer-motion";
-import { LeadCaptureForm } from "@/components/LeadCaptureForm";
+import { LeadCaptureForm } from "@/components/features/lead-capture/index";
 import { Logger } from "@/lib/logger";
 import { fadeIn } from "@/lib/animations";
 
@@ -9,7 +10,11 @@ export default function BookkeepingPage() {
   Logger.info("page-view", "Bookkeeping page viewed");
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <ServiceLayout
+      title="Bookkeeping Services"
+      description="Professional bookkeeping services to maintain accurate financial records and ensure compliance."
+      imageSrc="/images/bookkeeping.jpg"
+    >
       <section className="mb-12">
         <h1 className="text-4xl font-bold mb-6">Bookkeeping Services</h1>
         <p className="text-xl text-muted-foreground mb-8">
@@ -60,6 +65,6 @@ export default function BookkeepingPage() {
         </h2>
         <LeadCaptureForm service="bookkeeping" />
       </section>
-    </div>
+    </ServiceLayout>
   );
 }

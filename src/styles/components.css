@@ -1,0 +1,3 @@
+.cta-button {
+  @apply bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-md hover:shadow-lg text-white font-semibold px-8 py-3;
+}

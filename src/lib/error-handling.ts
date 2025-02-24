@@ -1,35 +1,43 @@
-import { toast } from "@/components/ui/use-toast";
-import Logger from "@/lib/logger";
+import { ZodError } from "zod";
+import Logger from "./logger";
 
-interface ErrorContext {
-  category?: string;
-  additionalData?: Record<string, unknown>;
+export interface ErrorHandlingOptions {
+  category: string;
   userMessage?: string;
+  logLevel?: "error" | "warn" | "info";
+  additionalData?: Record<string, unknown>;
 }
 
-export function handleError(error: Error, context?: ErrorContext) {
-  const category = context?.category || "application";
-  const errorData = {
-    name: error.name,
-    message: error.message,
-    stack: error.stack,
-    ...context?.additionalData,
-  };
-
-  Logger.error(category, error.message, errorData);
-
-  toast({
-    title: "Error",
-    description: context?.userMessage || "An unexpected error occurred. Please try again.",
-    // Removed 'variant' since it's not supported by the default toast type
-  });
-
-  if (process.env.NODE_ENV === "development") {
-    console.error("Error details:", error);
-    if (context?.additionalData) {
-      console.error("Additional context:", context.additionalData);
-    }
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+    public details?: unknown
+  ) {
+    super(message);
   }
+}
+
+export function handleError(error: unknown, options: ErrorHandlingOptions) {
+  if (error instanceof ZodError) {
+    Logger.warn(options.category, "Validation failed", {
+      errors: error.errors,
+    });
+    throw new ApiError("Validation failed", 400, error.errors);
+  }
+
+  if (error instanceof ApiError) {
+    Logger[options.logLevel || "error"](options.category, error.message, {
+      details: error.details,
+    });
+    throw error;
+  }
+
+  Logger.error(options.category, "Unexpected error", { error });
+  throw new ApiError(
+    options.userMessage || "An unexpected error occurred",
+    500
+  );
 }
 // Add retry mechanism
 export async function withRetry<T>(

@@ -30,7 +30,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"]
     },
     "typeRoots": ["./types", "./node_modules/@types"],
     "types": ["jest", "@testing-library/jest-dom", "next", "next-pwa"]

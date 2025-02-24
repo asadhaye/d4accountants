@@ -1,43 +1,74 @@
 import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+const MONGODB_URI = process.env.MONGODB_URI;
+
+interface GlobalMongoose {
+  mongoose: Promise<typeof mongoose>;
+  mongoClient: Promise<MongoClient>;
 }
 
-const uri = process.env.MONGODB_URI;
-let clientPromise: Promise<typeof mongoose>;
+declare global {
+  // eslint-disable-next-line no-var
+  var __mongoConnections: Promise<GlobalMongoose> | undefined;
+}
 
-if (process.env.NODE_ENV === "development") {
-  const globalWithMongoose = global as typeof globalThis & {
-    mongoose: Promise<typeof mongoose>;
-  };
-
-  if (!globalWithMongoose.mongoose) {
-    globalWithMongoose.mongoose = connectToDatabase();
+async function createConnections(): Promise<GlobalMongoose> {
+  if (!MONGODB_URI) {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      console.warn('MongoDB URI not found. Using mock connections for development/test.');
+      return {
+        mongoose: Promise.resolve(mongoose),
+        mongoClient: Promise.resolve(new MongoClient('mongodb://mock')),
+      };
+    }
+    throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
   }
-  clientPromise = globalWithMongoose.mongoose;
-} else {
-  clientPromise = connectToDatabase();
-}
 
-async function connectToDatabase(): Promise<typeof mongoose> {
   try {
-    await mongoose.connect(uri);
+    const mongooseConnection = mongoose.connect(MONGODB_URI);
+    const mongoClient = new MongoClient(MONGODB_URI).connect();
+
+    // Handle graceful shutdown
     process.on("SIGINT", async () => {
       try {
         await mongoose.connection.close();
-        console.log("MongoDB connection closed through app termination");
+        await (await mongoClient).close();
+        console.log("Database connections closed through app termination");
         process.exit(0);
       } catch (err) {
-        console.error("Error closing MongoDB connection:", err);
+        console.error("Error closing database connections:", err);
         process.exit(1);
       }
     });
-    return mongoose;
+
+    return {
+      mongoose: mongooseConnection,
+      mongoClient,
+    };
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      console.warn('Failed to connect to MongoDB. Using mock connections for development/test.');
+      return {
+        mongoose: Promise.resolve(mongoose),
+        mongoClient: Promise.resolve(new MongoClient('mongodb://mock')),
+      };
+    }
     throw error;
   }
 }
 
-export { clientPromise };
+// Create and export connections based on environment
+const connections: Promise<GlobalMongoose> = (() => {
+  if (process.env.NODE_ENV === "development") {
+    if (!global.__mongoConnections) {
+      global.__mongoConnections = createConnections();
+    }
+    return global.__mongoConnections;
+  }
+  return createConnections();
+})();
+
+export { connections };
+export const clientPromise = connections.then((conn: GlobalMongoose) => conn.mongoose);
+export const mongoClient = connections.then((conn: GlobalMongoose) => conn.mongoClient);

@@ -1,20 +1,47 @@
-"use client";
-
 import * as React from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+const cardVariants = {
+  default: "rounded-lg border bg-card text-card-foreground shadow-sm",
+  interactive: "hover:bg-accent/50 transition-colors",
+};
+
+// Base component creator to reduce duplication
+const createComponent = <T extends keyof HTMLElementTagNameMap>(
+  element: T,
+  defaultClassName: string
+) => {
+  type Props = HTMLMotionProps<T> & {
+    className?: string | undefined;
+  };
+
+  const Component = React.forwardRef<HTMLElementTagNameMap[T], Props>(
+    (props, ref) => {
+      const MotionComponent = motion[element] as React.ComponentType<Props>;
+      return (
+        <MotionComponent
+          ref={ref}
+          className={cn(defaultClassName, 'className' in props ? props.className : undefined)}
+          {...props}
+        />
+      );
+    }
+  );
+
+  Component.displayName = `Motion${element.charAt(0).toUpperCase()}${element.slice(1)}`;
+  return Component;
+};
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  HTMLMotionProps<"div">
->(({ className, ...props }, ref) => (
-  <motion.div
+  React.HTMLAttributes<HTMLDivElement> & { interactive?: boolean }
+>(({ className, interactive, ...props }, ref) => (
+  <div
     ref={ref}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
     className={cn(
-      "rounded-lg border bg-card/80 backdrop-blur-sm text-card-foreground shadow-sm hover:shadow-md transition-all",
+      cardVariants.default,
+      interactive && cardVariants.interactive,
       className
     )}
     {...props}
@@ -22,60 +49,25 @@ const Card = React.forwardRef<
 ));
 Card.displayName = "Card";
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  HTMLMotionProps<"div">
->(({ className, ...props }, ref) => (
-  <motion.div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props}
-  />
-));
+const CardHeader = createComponent("div", "flex flex-col space-y-1.5 p-6");
 CardHeader.displayName = "CardHeader";
 
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  HTMLMotionProps<"h3">
->(({ className, ...props }, ref) => (
-  <motion.h3
-    ref={ref}
-    className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
-));
+const CardTitle = createComponent(
+  "h3",
+  "text-2xl font-semibold leading-none tracking-tight"
+);
 CardTitle.displayName = "CardTitle";
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  HTMLMotionProps<"p">
->(({ className, ...props }, ref) => (
-  <motion.p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-));
+const CardDescription = createComponent(
+  "p",
+  "text-sm text-muted-foreground"
+);
 CardDescription.displayName = "CardDescription";
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  HTMLMotionProps<"div">
->(({ className, ...props }, ref) => (
-  <motion.div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-));
+const CardContent = createComponent("div", "p-6 pt-0");
 CardContent.displayName = "CardContent";
 
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  HTMLMotionProps<"div">
->(({ className, ...props }, ref) => (
-  <motion.div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props}
-  />
-));
+const CardFooter = createComponent("div", "flex items-center p-6 pt-0");
 CardFooter.displayName = "CardFooter";
 
 export {

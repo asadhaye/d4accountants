@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { FooterLinkGroup } from "./footer-link-group";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -43,35 +44,13 @@ export function Footer() {
           {/* Services Links */}
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <FooterLinkGroup title="Services" links={footerLinks.services} />
           </div>
 
           {/* Company Links */}
           <div>
             <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <FooterLinkGroup title="Company" links={footerLinks.company} />
           </div>
         </div>
 

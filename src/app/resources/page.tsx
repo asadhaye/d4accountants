@@ -1,10 +1,17 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { fadeIn, slideUp } from "@/lib/animations";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { slideUp } from "@/lib/animations";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 const resources = [
   {
@@ -29,13 +36,8 @@ const resources = [
 
 export default function ResourcesPage() {
   return (
-    <div className="container mx-auto px-6 py-12">
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        className="space-y-12"
-      >
+    <AnimatedSection className="container mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Resources</h1>
           <p className="text-xl text-muted-foreground">
@@ -57,13 +59,13 @@ export default function ResourcesPage() {
                       {resource.category}
                     </span>
                   </div>
-                  <CardTitle className="text-xl">{resource.title}</CardTitle>
+                  <CardTitle>{resource.title}</CardTitle>
                   <CardDescription>{resource.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Link href={resource.link}>
-                    <Button variant="outline" className="w-full">
-                      Access Resource
+                    <Button className="w-full">
+                      Learn More
                     </Button>
                   </Link>
                 </CardContent>
@@ -71,7 +73,7 @@ export default function ResourcesPage() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </AnimatedSection>
   );
 }

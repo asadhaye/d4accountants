@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 import { clientPromise } from "@/lib/db/connect";
 import { Lead } from "@/lib/db/schema";
 import { z } from "zod";
-import createDOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
-import Logger from "@/lib/logger"; // Changed to default import
+import createDOMPurify from 'isomorphic-dompurify';
+import Logger from "@/lib/logger";
+
+const DOMPurify = createDOMPurify();
 
 const leadSchema = z.object({
   name: z.string().min(2),
@@ -16,14 +17,7 @@ const leadSchema = z.object({
 
 type LeadInput = z.infer<typeof leadSchema>;
 
-let DOMPurify: ReturnType<typeof createDOMPurify> | null = null;
-
 const sanitizeInput = (input: Record<string, unknown>) => {
-  if (!DOMPurify) {
-    const window = new JSDOM("").window;
-    DOMPurify = createDOMPurify(window);
-  }
-
   const sanitized: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(input)) {
     if (typeof value === "string") {

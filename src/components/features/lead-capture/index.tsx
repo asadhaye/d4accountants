@@ -4,26 +4,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { fadeIn, slideUp } from "@/lib/animations";
+import { leadValidationSchema, type LeadFormData } from "@/lib/db/schema";
+
 
 interface LeadCaptureFormProps {
-  service?: string;
+  service?: LeadFormData['serviceInterest'];
 }
 
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-  service: z.enum(["tax-planning", "bookkeeping", "financial-advisory"]).optional(),
-});
-
-type FormData = z.infer<typeof formSchema>;
+type FormData = LeadFormData;
 
 export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,9 +28,13 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
     reset,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(leadValidationSchema),
     defaultValues: {
-      service: service as FormData['service']
+      name: '',
+      email: '',
+      phone: '',
+      serviceInterest: service || 'tax-planning', // Provide a default value when service is undefined
+      message: ''
     }
   });
 
@@ -60,10 +57,10 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
       });
       reset();
     } catch (err) {
-      console.error('Form submission error:', err);
+      const errorMessage = err instanceof Error ? err.message : "Failed to submit form. Please try again.";
       toast({
         title: "Error",
-        description: "Failed to submit form. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -73,15 +70,14 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
 
   return (
     <motion.section
+      variants={fadeIn}
       initial="hidden"
       animate="visible"
-      variants={fadeIn}
-      className="py-16 bg-muted/50"
+      className="w-full max-w-md mx-auto p-6"
     >
-      <div className="container mx-auto px-4">
-        <motion.div variants={slideUp} className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-center">Get in Touch</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="space-y-8">
+        <motion.div variants={slideUp} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <Input
                 {...register("name")}
@@ -113,9 +109,10 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
               />
             </div>
 
-            <input
+            <Input
+              {...register("serviceInterest")}
               type="hidden"
-              {...register("service")}
+              value={service}
             />
 
             <div>

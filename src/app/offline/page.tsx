@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { AnimatedSection } from "@/components/shared/animated-section";
 import { Button } from "@/components/ui/button";
-import { fadeIn, slideUp } from "@/lib/animations";
 
 export default function OfflinePage() {
   const handleRetry = () => {
@@ -10,25 +9,10 @@ export default function OfflinePage() {
   };
 
   return (
-    <motion.div
-      className="min-h-screen flex items-center justify-center bg-background p-4"
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
-    >
-      <motion.div
-        className="max-w-md w-full space-y-8 text-center"
-        variants={slideUp}
-        initial="hidden"
-        animate="visible"
-      >
+    <AnimatedSection className="container mx-auto px-6 py-12">
+      <div className="max-w-2xl mx-auto text-center">
         <div className="space-y-4">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="w-24 h-24 mx-auto"
-          >
+          <div className="w-24 h-24 mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -40,42 +24,19 @@ export default function OfflinePage() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"
               />
             </svg>
-          </motion.div>
-          <motion.h1
-            className="text-3xl font-bold text-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            You are Offline
-          </motion.h1>
-          <motion.p
-            className="text-lg text-gray-600 dark:text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            It seems you&apos;ve lost your internet connection. Please check your
-            connection and try again. {/* Escaped 'you've' with &apos; */}
-          </motion.p>
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <Button
-            onClick={handleRetry}
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
+          </div>
+          <h1 className="text-3xl font-bold">You&apos;re Offline</h1>
+          <p className="text-muted-foreground">
+            Please check your internet connection and try again.
+          </p>
+          <Button onClick={handleRetry} className="mt-4">
             Try Again
           </Button>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </AnimatedSection>
   );
 }
