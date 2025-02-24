@@ -29,7 +29,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"]
     },
     "typeRoots": ["./types", "./node_modules/@types"],
     "types": ["jest", "@testing-library/jest-dom", "next", "next-pwa"]

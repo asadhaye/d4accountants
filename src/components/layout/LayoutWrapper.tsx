@@ -1,12 +1,12 @@
 'use client';
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 import { Toaster } from "@/components/ui/toaster";
-import CookieConsent from "@/components/CookieConsent";
-import PWAInstaller from "@/components/PWAInstaller";
+import { CookieConsent } from "@/components/features/cookie-consent/index";
+import { PWAInstaller } from "@/components/features/pwa/index";
 
-export default function LayoutWrapper({
+export function LayoutWrapper({
   children
 }: {
   children: React.ReactNode;

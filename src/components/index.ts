@@ -9,6 +9,7 @@ export {
   CardFooter,
 } from "./ui/card";
 export { Input } from "./ui/input";
+export { BaseInput } from "./ui/base-input";
 export { ScrollArea, ScrollBar } from "./ui/scroll-area";
 export {
   Select,
@@ -31,9 +32,14 @@ export {
 export { Toaster } from "./ui/toaster";
 export { useToast } from "./ui/use-toast";
 
-// Re-export main components
-export { default as ChatBot } from "./ChatBot";
-export { default as CookieConsent } from "./CookieConsent";
-export { default as Footer } from "./Footer";
-export { default as Header } from "./Header";
-export { LeadCaptureForm } from "./LeadCaptureForm";
+// Re-export layout components
+export * from "./layout";
+
+// Re-export section components
+export * from "./sections";
+
+// Re-export feature components
+export * from "./features";
+
+// Re-export shared components
+export * from "./shared";

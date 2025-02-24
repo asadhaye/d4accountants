@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LeadCaptureForm } from "@/components/LeadCaptureForm";
+import { LeadCaptureForm } from "@/components/features/lead-capture";
 import { Logger } from "@/lib/logger";
 import { fadeIn } from "@/lib/animations";
 

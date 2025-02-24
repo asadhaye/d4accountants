@@ -6,30 +6,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:shadow-md",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-blue-600 text-white shadow hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600",
-        destructive: "bg-red-600 text-white shadow-sm hover:bg-red-600/90 dark:bg-red-600 dark:hover:bg-red-700",
-        outline: "border-2 border-blue-200 bg-white shadow-sm hover:bg-blue-50 hover:text-blue-600 dark:border-blue-800 dark:bg-blue-950 dark:hover:bg-blue-900",
-        secondary: "bg-gray-100 text-gray-900 shadow-sm hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700",
-        ghost: "hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900 dark:hover:text-blue-400",
-        link: "text-blue-600 underline-offset-4 hover:underline dark:text-blue-400",
-        accent: "bg-teal-600 text-white shadow hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600"
+        default: "bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-sm hover:shadow-md hover:opacity-90 active:scale-[0.98]",
+        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 active:scale-[0.98]",
+        outline: "border-2 border-input bg-background shadow-sm hover:bg-accent/10 hover:text-accent active:scale-[0.98]",
+        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 active:scale-[0.98]",
+        ghost: "hover:bg-accent/10 hover:text-accent active:scale-[0.98]",
+        link: "text-primary underline-offset-4 hover:underline",
+        premium: "bg-gradient-to-r from-primary via-accent to-primary text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
       },
       size: {
-        default: "h-11 px-5 py-2",
-        sm: "h-9 rounded-lg px-4 text-sm",
+        default: "h-11 px-6 py-2",
+        sm: "h-9 rounded-lg px-4",
         lg: "h-12 rounded-xl px-8 text-lg",
-        icon: "h-11 w-11",
+        icon: "h-11 w-11 rounded-lg",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps

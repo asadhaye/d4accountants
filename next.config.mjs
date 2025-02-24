@@ -1,8 +1,29 @@
-// next.config.mjs
+import withPWAInit from '@ducanh2912/next-pwa';
+
+const withPWA = withPWAInit({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+  runtimeCaching: [
+    {
+      urlPattern: /^https?.*/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'offlineCache',
+        expiration: {
+          maxEntries: 200,
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+      },
+    },
+  ],
+});
+
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
+  reactStrictMode: true,
   webpack: (config, { isServer }) => {
-    // Prevent server-side native module loading attempts
     if (!isServer) {
       config.resolve.fallback = {
         fs: false,
@@ -13,16 +34,10 @@ const config = {
         os: false,
       };
     }
-
-    // Remove node-loader configuration as it's not needed for browser-only usage
-    config.module.rules = config.module.rules.filter(rule => 
-      rule.use !== 'node-loader'
-    );
-
     return config;
   },
   serverExternalPackages: ['@xenova/transformers'],
   output: 'standalone',
 };
 
-export default config;
+export default withPWA(nextConfig);
