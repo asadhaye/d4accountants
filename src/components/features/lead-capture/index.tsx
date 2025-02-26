@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
 import { fadeIn, slideUp } from "@/lib/animations";
 import { leadValidationSchema, type LeadFormData } from "@/lib/db/schema";
+import { useFormSubmit } from "@/hooks/use-form-submit";
 
 
 interface LeadCaptureFormProps {
@@ -19,8 +18,7 @@ interface LeadCaptureFormProps {
 type FormData = LeadFormData;
 
 export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const { isSubmitting, handleSubmit: submitForm } = useFormSubmit<FormData>();
 
   const {
     register,
@@ -39,33 +37,19 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
   });
 
   const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit');
+    await submitForm(
+      async (formData: FormData) => {
+        return fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+      },
+      data,
+      {
+        onSuccess: () => reset()
       }
-
-      toast({
-        title: "Success!",
-        description: "We'll be in touch with you shortly.",
-      });
-      reset();
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to submit form. Please try again.";
-      toast({
-        title: "Error",
-        description: errorMessage,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    );
   };
 
   return (

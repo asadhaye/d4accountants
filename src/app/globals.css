@@ -25,21 +25,71 @@
 
 @layer base {
   body {
-    @apply antialiased bg-background text-foreground;
+    @apply antialiased bg-background text-foreground leading-relaxed;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight mb-6;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight mb-5;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight mb-4;
+  }
+
+  p {
+    @apply text-base leading-7 mb-4 text-opacity-90;
   }
 }
 
 @layer components {
   /* Modern glass effect */
   .glass {
-    @apply backdrop-blur-lg bg-white/10 border border-white/20;
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-lg;
   }
 
   /* Enhanced button styles */
   .btn-gradient {
     @apply bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 
-           transition-all duration-300 transform hover:scale-105;
+           transition-all duration-300 transform hover:scale-105 rounded-lg px-6 py-3 font-medium
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Section styles */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Container styles */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Form field styles */
+  .form-input {
+    @apply w-full rounded-lg border border-input bg-background px-4 py-3
+           focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200;
+  }
+
+  /* Navigation link styles */
+  .nav-link {
+    @apply text-foreground text-opacity-90 hover:text-foreground hover:text-opacity-100 transition-colors duration-200
+           relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5
+           after:bg-primary hover:after:w-full after:transition-all after:duration-300;
+  }
+
+  /* Text with opacity variants */
+  .text-faded {
+    @apply text-opacity-90;
   }
 
   /* Custom scrollbar */

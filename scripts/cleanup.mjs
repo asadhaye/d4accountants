@@ -97,7 +97,7 @@ async function findUnusedFiles() {
 
 async function findDuplicateCode() {
   try {
-    const jscpdOutput = execSync('npx jscpd ./src --ignore "**/*.test.{ts,tsx}" --format "javascript,typescript,jsx,tsx" --threshold 1 --reporters "console" --mode "strict" --min-lines 5 --min-tokens 50', { 
+    const jscpdOutput = execSync('npx jscpd ./src --config jscpd.json', { 
       cwd: rootDir,
       stdio: ['pipe', 'pipe', 'ignore']
     }).toString();
@@ -106,14 +106,34 @@ async function findDuplicateCode() {
       .split('\n')
       .filter(line => line.includes('Clone found'))
       .map(line => {
-        const match = line.match(/Clone found in (.+) and (.+) \((\d+) tokens, (\d+) lines\)/);
+        const match = line.match(/Clone found \((.+)\):\s+- (.+) \[.+\] \((\d+) lines, (\d+) tokens\)\s+(.+)/);
         if (match) {
-          return `Duplicate code found between:\n  - ${match[1]}\n  - ${match[2]}\n  Size: ${match[4]} lines (${match[3]} tokens)`;
+          return `Duplicate code found between:\n  - ${match[2]}\n  - ${match[5]}\n  Size: ${match[3]} lines (${match[4]} tokens)`;
         }
         return line.trim();
       });
   } catch (error) {
-    console.error('Error running jscpd:', error);
+    // Extract the useful information from the error output if available
+    if (error.stdout) {
+      const output = error.stdout.toString();
+      const clones = output
+        .split('\n')
+        .filter(line => line.includes('Clone found'))
+        .map(line => {
+          const match = line.match(/Clone found \((.+)\):\s+- (.+) \[.+\] \((\d+) lines, (\d+) tokens\)\s+(.+)/);
+          if (match) {
+            return `Duplicate code found between:\n  - ${match[2]}\n  - ${match[5]}\n  Size: ${match[3]} lines (${match[4]} tokens)`;
+          }
+          return line.trim();
+        });
+      
+      if (clones.length > 0) {
+        return clones;
+      }
+    }
+    
+    console.error('Error running jscpd:', error.message);
+    console.log('Try running "npm run find-duplicates" directly for more details.');
     return [];
   }
 }

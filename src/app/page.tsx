@@ -1,26 +1,16 @@
 // src/app/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-import { Hero, ServiceCards } from "@/components/sections";
-import { LeadCaptureForm } from "@/components/features/lead-capture/index";
+import { Hero } from '@/components/sections/hero';
+import { WhyChooseUs } from '@/components/sections/why-choose-us';
+import { Solutions } from '@/components/sections/solutions/Solutions';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
-    <main className="min-h-screen">
+    <main>
       <Hero />
-      <ServiceCards />
-      <LeadCaptureForm />
+      <WhyChooseUs />
+      <Solutions />
     </main>
   );
 }

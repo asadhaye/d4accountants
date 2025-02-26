@@ -39,6 +39,37 @@ function AnimatedContent() {
       </motion.section>
 
       <motion.section variants={slideUp} className="mb-16">
+        <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
+        <p className="text-muted-foreground mb-8">
+          We are online accountants dedicated to supporting start-up and small businesses with our competitively priced fixed fee plans. Recognising the significance of costs for small businesses, we maintain exceptionally low overheads through the use of cutting-edge technology. By minimising our operational expenses, we pass these savings directly to our clients.
+        </p>
+      </motion.section>
+
+      <motion.section variants={slideUp} className="mb-16">
+        <h2 className="text-2xl font-semibold mb-8">Advantages of Selecting Us as Your Accountants</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: "Price Match Guarantee", icon: "💰" },
+            { title: "Lowest Fixed Fee Plans", icon: "📊" },
+            { title: "No VAT on our prices", icon: "✨" },
+            { title: "No Long-Term Contracts", icon: "📝" },
+            { title: "No Local Accountant Needed", icon: "🌐" },
+            { title: "Unlimited virtual Meetings", icon: "💻" },
+            { title: "Top Cloud Solutions", icon: "☁️", description: "Xero, QuickBooks, FreeAgent" },
+            { title: "Easy Switching", icon: "🔄", description: "from your existing accountants" }
+          ].map((advantage) => (
+            <div key={advantage.title} className="p-4 rounded-lg bg-accent/5 border border-border">
+              <div className="text-2xl mb-2">{advantage.icon}</div>
+              <h3 className="font-semibold mb-1">{advantage.title}</h3>
+              {advantage.description && (
+                <p className="text-sm text-muted-foreground">{advantage.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section variants={slideUp} className="mb-16">
         <h2 className="text-2xl font-semibold mb-8 text-center">Our Team</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member) => (

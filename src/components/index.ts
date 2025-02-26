@@ -1,45 +1,26 @@
-// Re-export UI components
-export { Button } from "./ui/button";
+// UI Components - only export what's actually used through this barrel
 export {
+  Button,
   Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "./ui/card";
-export { Input } from "./ui/input";
-export { BaseInput } from "./ui/base-input";
-export { ScrollArea, ScrollBar } from "./ui/scroll-area";
-export {
-  Select,
-  SelectGroup,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
-export { Textarea } from "./ui/textarea";
-export {
-  Toast,
-  ToastAction,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "./ui/toast";
-export { Toaster } from "./ui/toaster";
-export { useToast } from "./ui/use-toast";
+} from './ui';
 
-// Re-export layout components
-export * from "./layout";
+// Layout Components
+export { Header } from './layout/Header';
+export { Footer } from './layout/Footer';
+export { LayoutWrapper } from './layout/LayoutWrapper';
 
-// Re-export section components
-export * from "./sections";
+// Feature Components
+export { ChatBot } from './features/chatbot';
+export { LeadCaptureForm } from './features/lead-capture';
 
-// Re-export feature components
-export * from "./features";
+// Section Components
+export { Hero } from './sections/hero';
+export { ServiceCards } from './sections/services';
 
-// Re-export shared components
-export * from "./shared";
+// Note: Remove any components that aren't actually imported through this barrel file
+// If you find you need them later, you can add them back

@@ -24,7 +24,7 @@ export function Footer() {
   return (
     <footer className="bg-background border-t border-border/20 backdrop-blur-sm">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
@@ -41,15 +41,23 @@ export function Footer() {
             </p>
           </div>
 
+          {/* Contact Information */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">Contact Us</h3>
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">Altrincham</p>
+              <p className="text-sm text-muted-foreground">Phone: 07300 300319</p>
+              <p className="text-sm text-muted-foreground">Email: info@d4accountants.co.uk</p>
+            </div>
+          </div>
+
           {/* Services Links */}
           <div>
-            <h3 className="font-semibold mb-4">Services</h3>
             <FooterLinkGroup title="Services" links={footerLinks.services} />
           </div>
 
           {/* Company Links */}
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
             <FooterLinkGroup title="Company" links={footerLinks.company} />
           </div>
         </div>

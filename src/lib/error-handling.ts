@@ -1,70 +1,36 @@
 import { ZodError } from "zod";
 import Logger from "./logger";
 
-export interface ErrorHandlingOptions {
+export function handleError(error: unknown, options: {
   category: string;
   userMessage?: string;
   logLevel?: "error" | "warn" | "info";
   additionalData?: Record<string, unknown>;
-}
-
-export class ApiError extends Error {
-  constructor(
-    message: string,
-    public status: number,
-    public details?: unknown
-  ) {
-    super(message);
-  }
-}
-
-export function handleError(error: unknown, options: ErrorHandlingOptions) {
+}) {
+  const { category, userMessage, logLevel = "error", additionalData } = options;
+  
   if (error instanceof ZodError) {
-    Logger.warn(options.category, "Validation failed", {
+    Logger.warn(category, "Validation failed", {
       errors: error.errors,
+      ...additionalData,
     });
-    throw new ApiError("Validation failed", 400, error.errors);
-  }
-
-  if (error instanceof ApiError) {
-    Logger[options.logLevel || "error"](options.category, error.message, {
-      details: error.details,
-    });
-    throw error;
-  }
-
-  Logger.error(options.category, "Unexpected error", { error });
-  throw new ApiError(
-    options.userMessage || "An unexpected error occurred",
-    500
-  );
-}
-// Add retry mechanism
-export async function withRetry<T>(
-  operation: () => Promise<T>,
-  maxRetries = 3,
-  delayMs = 1000
-): Promise<T> {
-  let lastError: Error;
-  
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-    try {
-      return await operation();
-    } catch (error) {
-      lastError = error as Error;
-      
-      if (attempt === maxRetries) {
-        handleError(lastError, {
-          category: 'retry-exhausted',
-          additionalData: { attempts: attempt },
-          userMessage: 'Operation failed after multiple attempts'
-        });
-        break;
-      }
-      
-      await new Promise(resolve => setTimeout(resolve, delayMs * attempt));
-    }
+    return {
+      status: 400,
+      message: userMessage || "Validation failed",
+      details: error.errors
+    };
   }
   
-  throw new Error('Operation failed after maximum retry attempts');
+  // Log the error
+  Logger[logLevel](category, error instanceof Error ? error.message : String(error), additionalData);
+  
+  // Return error response
+  return {
+    status: 500,
+    message: userMessage || "An unexpected error occurred",
+    details: error instanceof Error ? error.message : error
+  };
 }
+
+// Removed unused exports:
+// ErrorHandlingOptions, ApiError, withRetry, createErrorHandler
