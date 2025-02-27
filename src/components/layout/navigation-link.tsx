@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
 interface NavigationLinkProps {
   href: string;
@@ -41,3 +41,5 @@ export function NavigationLink({ href, children, className, onClick }: Navigatio
     </Link>
   );
 }
+
+

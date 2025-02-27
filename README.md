@@ -146,7 +146,7 @@ Key meta tags and customization options:
 ### Implementation
 
 ```typescript
-import Logger from "@/lib/logger";
+import { Logger } from "@/lib/logger";
 
 // Adding new log entries
 Logger.info("event-name", "Event description");

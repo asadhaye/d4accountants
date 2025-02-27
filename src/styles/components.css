@@ -1,3 +1,47 @@
 .cta-button {
-  @apply bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-md hover:shadow-lg text-white font-semibold px-8 py-3;
+  @apply bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-md hover:shadow-lg text-white font-semibold px-8 py-3 rounded-lg;
+}
+
+.hero-section {
+  @apply glass relative overflow-hidden py-20 px-6;
+}
+
+.feature-card {
+  @apply glass-card p-6 hover:translate-y-[-4px] transition-all duration-300;
+}
+
+.service-card {
+  @apply glass-card p-8 hover:scale-[1.02] transition-all duration-300;
+}
+
+.team-card {
+  @apply glass-card p-6 text-center hover:translate-y-[-4px] transition-all duration-300;
+}
+
+.contact-form {
+  @apply glass-card p-8 space-y-6;
+}
+
+.testimonial-card {
+  @apply glass-card p-6 hover:translate-y-[-4px] transition-all duration-300;
+}
+
+.pricing-card {
+  @apply glass-card p-8 hover:scale-[1.02] transition-all duration-300;
+}
+
+.blog-card {
+  @apply glass-card overflow-hidden hover:translate-y-[-4px] transition-all duration-300;
+}
+
+.faq-item {
+  @apply glass-card p-6 mb-4 hover:border-primary/30 transition-all duration-300;
+}
+
+.stats-card {
+  @apply glass-card p-6 text-center hover:scale-[1.02] transition-all duration-300;
+}
+
+.footer-section {
+  @apply glass mt-20 py-12;
 }

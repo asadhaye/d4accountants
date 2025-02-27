@@ -10,25 +10,25 @@ export function PartnerLogos() {
       name: "FreeAgent Platinum Partner",
       src: "/images/partners/freeagent.png",
       width: 150,
-      height: 40
+      height: 60
     },
     {
       name: "Xero Certified Advisor",
       src: "/images/partners/xero.png",
       width: 150,
-      height: 40
+      height: 60
     },
     {
       name: "Dext Partner",
       src: "/images/partners/dext.png",
       width: 150,
-      height: 40
+      height: 60
     },
     {
       name: "QuickBooks Platinum ProAdvisor",
       src: "/images/partners/quickbooks.jpg",
       width: 150,
-      height: 40
+      height: 60
     }
   ];
 

@@ -1,4 +1,4 @@
-import { TeamMember } from '@/data/team';
+import type { TeamMember } from '@/data/team';
 
 export function TeamMemberCard({ member }: { member: TeamMember }) {
   return (

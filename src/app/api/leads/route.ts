@@ -3,7 +3,7 @@ import { clientPromise } from "@/lib/db/connect";
 import { Lead } from "@/lib/db/schema";
 import { z } from "zod";
 import createDOMPurify from 'isomorphic-dompurify';
-import Logger from "@/lib/logger";
+import { Logger } from "@/lib/logger";
 
 const DOMPurify = createDOMPurify();
 

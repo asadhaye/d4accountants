@@ -1,4 +1,5 @@
-import { pipeline, env, Text2TextGenerationPipeline } from '@xenova/transformers';
+import { pipeline, env } from '@xenova/transformers';
+import type { Text2TextGenerationPipeline } from '@xenova/transformers';
 
 // Configure to use web environment
 env.useBrowserCache = true;

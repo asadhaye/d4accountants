@@ -1,5 +1,5 @@
 // Simple logger implementation
-const Logger = {
+export const Logger = {
   error: (category: string, message: string, data?: Record<string, unknown>) => {
     console.error(`[ERROR][${category}] ${message}`, data || '');
   },
@@ -19,7 +19,6 @@ const Logger = {
   }
 };
 
-export default Logger;
-
 // Removed unused exports:
 // LogLevel, LogEntry
+

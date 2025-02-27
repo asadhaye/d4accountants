@@ -1,5 +1,11 @@
 import { useState, useCallback } from 'react';
-import type { ChatMessage } from "@/app/api/chat/types";
+import type { ChatMessage as BaseChatMessage } from "@/app/api/chat/types";
+
+// Extend the base ChatMessage type with the additional properties we need
+interface ChatMessage extends BaseChatMessage {
+  createdAt: Date;
+  sessionId: string;
+}
 
 export function useChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -27,7 +33,7 @@ export function useChat() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: content }),
+        body: JSON.stringify({ message: content, sessionId: userMessage.sessionId }),
       });
       
       if (!response.ok) {

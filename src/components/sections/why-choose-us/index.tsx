@@ -1,93 +1,152 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
-import Image from "next/image";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, Clock, Shield, TrendingUp } from "lucide-react";
 
-const features = [
+interface Feature {
+  title: string;
+  description: string;
+  icon: React.ReactElement<{ className?: string }>;
+}
+
+const features: Feature[] = [
   {
-    title: "You Can Be Anywhere",
-    description: "You don't require a nearby accountant since our sophisticated accounting cloud technology allows for remote delivery of services.",
-    icon: "/icons/globe.svg"
+    title: "Expert Guidance",
+    description: "Our team of certified accountants provides expert advice tailored to your business needs.",
+    icon: <CheckCircle className="h-10 w-10 text-violet-400" />,
   },
   {
-    title: "Our Lowest Fixed Fee Plans",
-    description: "We offer fixed-fee plans to help you budget for the service you select, ensuring there are no unexpected bills. We're delighted to provide you with quotes for any additional services based on your needs.",
-    icon: "/icons/financial-advisory.svg"
+    title: "Time Efficiency",
+    description: "We help you save valuable time by handling complex financial matters efficiently.",
+    icon: <Clock className="h-10 w-10 text-violet-400" />,
   },
   {
-    title: "Unlimited Support",
-    description: "We are dedicated to alleviating your stress by managing your business finances, identifying new opportunities, empowering you to take control, and providing clear insights to facilitate your growth and success.",
-    icon: "/icons/tax-planning.svg"
+    title: "Financial Security",
+    description: "Ensure compliance and minimize risks with our comprehensive financial services.",
+    icon: <Shield className="h-10 w-10 text-violet-400" />,
   },
   {
-    title: "Qualified Accountants",
-    description: "Our accountants are qualified Chartered Accountants or Chartered Certified Accountants. With extensive experience spanning various practices and industries, we bring a diverse range of expertise to our work.",
-    icon: "/icons/bookkeeping.svg"
+    title: "Growth Strategy",
+    description: "Strategic financial planning to help your business achieve sustainable growth.",
+    icon: <TrendingUp className="h-10 w-10 text-violet-400" />,
   },
-  {
-    title: "Slick Communication",
-    description: "The key to our success is recognising the significance of effective communication with you. It goes beyond simply completing tasks with excellence; it entails promptly addressing your inquiries and earning your trust as a reliable advisor.",
-    icon: "/icons/window.svg"
-  },
-  {
-    title: "Our Smart Bookkeeping",
-    description: "We utilise the cutting-edge cloud accounting platforms Xero, quickbooks, FreeAgent, Dext and AutoEntry. These platforms offer top-notch security, flexibility, scalability, affordability, and innovation, significantly streamlining our clients' workload like never before.",
-    icon: "/icons/bookkeeping.svg"
-  },
-  {
-    title: "Proven Track Record",
-    description: "We pledge to provide you with peace of mind, minimised downtime, expedited problem resolution, data security, efficient communication, and ease in managing your accounting and taxes.",
-    icon: "/icons/tax-planning.svg"
-  },
-  {
-    title: "Changing your accountant",
-    description: "Switching accountants doesn't have to be a daunting process. If you're dissatisfied with your current accountant's services or pricing, transitioning to our firm is a simple and hassle-free endeavor. All you need to do is appoint us as your new accountant.",
-    icon: "/icons/financial-advisory.svg"
-  }
 ];
 
 export function WhyChooseUs() {
+  const [floatingElements, setFloatingElements] = useState<Array<{ x: number, y: number, scale: number }>>([]);
+
+  useEffect(() => {
+    setFloatingElements(
+      [...Array(10)].map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        scale: Math.random() * 0.5 + 0.5,
+      }))
+    );
+  }, []);
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          initial={{ opacity: 0.5, scale: 0.8 }}
+          animate={{
+            opacity: [0.4, 0.6, 0.4],
+            scale: [0.8, 1.2, 0.8],
+            rotate: [0, 45, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 blur-3xl rounded-full opacity-30"
+        />
+      </div>
+
+      {/* Floating Elements */}
       <motion.div
-        variants={staggerContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="absolute inset-0 z-0"
+      >
+        {floatingElements.map((element, i) => (
+          <motion.div
+            key={i}
+            initial={{
+              x: element.x,
+              y: element.y,
+              scale: element.scale,
+            }}
+            animate={{
+              y: [
+                Math.random() * element.y,
+                Math.random() * element.y,
+              ],
+              x: [
+                Math.random() * element.x,
+                Math.random() * element.x,
+              ],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute w-2 h-2 bg-white rounded-full opacity-20"
+          />
+        ))}      
+      </motion.div>
+
+      <motion.div 
+        className="container mx-auto px-4 relative z-10"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
-        className="container mx-auto px-4"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
       >
-        <motion.div variants={fadeIn} className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Why Choose Us?
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experience excellence in accounting services with our comprehensive solutions
-          </p>
-        </motion.div>
+        <div className="text-center mb-12">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600"
+            variants={fadeIn}
+          >
+            Why Choose Us
+          </motion.h2>
+          <motion.p 
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
+            variants={fadeIn}
+          >
+            We combine professional expertise with personalized service to deliver exceptional value to our clients.
+          </motion.p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <motion.div
               key={feature.title}
               variants={fadeIn}
-              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+              className="relative group"
             >
-              <div className="flex items-center justify-center mb-4">
-                <Image
-                  src={feature.icon}
-                  alt={feature.title}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 text-center text-sm">
-                {feature.description}
-              </p>
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+              <Card className="relative h-full bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                <CardHeader>
+                  <div className="mb-4 p-3 rounded-2xl bg-gradient-to-br from-violet-500/10 to-fuchsia-500/10 shadow-inner w-fit">
+                    {React.cloneElement(feature.icon, { className: 'h-10 w-10 text-violet-400' })}
+                  </div>
+                  <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base text-gray-300">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

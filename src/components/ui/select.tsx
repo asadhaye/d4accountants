@@ -9,9 +9,13 @@ const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
+type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+  'data-state'?: string;
+};
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+  SelectTriggerProps
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
@@ -23,7 +27,11 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      {props['data-state'] === 'open' ? (
+        <ChevronUp className="h-4 w-4 opacity-50 transition-transform duration-200" />
+      ) : (
+        <ChevronDown className="h-4 w-4 opacity-50 transition-transform duration-200" />
+      )}
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -82,8 +90,6 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
-// Removed SelectSeparator as it's unused
-
 export {
   Select,
   SelectGroup,
@@ -92,3 +98,10 @@ export {
   SelectContent,
   SelectItem,
 };
+
+
+
+
+
+
+

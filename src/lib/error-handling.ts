@@ -1,5 +1,5 @@
 import { ZodError } from "zod";
-import Logger from "./logger";
+import { Logger } from "./logger";
 
 export function handleError(error: unknown, options: {
   category: string;

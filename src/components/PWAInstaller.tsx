@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { initPWAInstall } from '@/lib/pwa-install';
 
-export default function PWAInstaller() {
+export function PWAInstaller() {
   useEffect(() => {
     initPWAInstall();
   }, []);

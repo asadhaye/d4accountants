@@ -16,46 +16,47 @@ const eslintConfig = [
       // Enforce named exports for consistency
       "import/prefer-default-export": "off",
       "import/no-default-export": "error",
-      
-      // Exception for Next.js pages and layouts which require default exports
-      "import/no-default-export": [
-        "error", 
-        { 
-          "ignore": [
-            "^pages/",
-            "^app/",
-            "^middleware",
-            "^next\\.config\\.(js|mjs|ts)"
-          ] 
-        }
-      ],
-      
+
       // Enforce function declarations for named functions
-      "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
-      
+      "func-style": ["error", "declaration", { allowArrowFunctions: true }],
+
       // Enforce consistent error handling
       "no-throw-literal": "error",
-      
-      // Enforce consistent promise handling
       "prefer-promise-reject-errors": "error",
-      
+
       // Enforce consistent type imports
-      "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }],
-      
-      // Enforce consistent React imports
+      "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }],
+
+      // Enforce consistent React imports (not needed in React 18+)
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
+      
+      // Additional rules to fix common issues
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
-    overrides: [
-      {
-        // Allow default exports in page files
-        files: ["src/app/**/*.tsx", "src/pages/**/*.tsx"],
-        rules: {
-          "import/no-default-export": "off"
-        }
-      }
-    ]
-  }
+  },
+  // Flat Config Condition (Replaces "overrides")
+  {
+    files: ["src/app/**/*.tsx", "src/pages/**/*.tsx"],
+    rules: {
+      "import/no-default-export": "off",
+    },
+  },
+  // Add additional override for Next.js API routes
+  {
+    files: ["src/app/api/**/*.ts", "src/pages/api/**/*.ts"],
+    rules: {
+      "import/no-default-export": "off",
+    },
+  },
+  // Add an exception for configuration files
+  {
+    files: ["*.config.mjs", "*.config.js", "*.config.ts"],
+    rules: {
+      "import/no-default-export": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

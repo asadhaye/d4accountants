@@ -1,9 +1,9 @@
 'use client';
 
-import ServiceLayout from '@/components/shared/service-layout';
+import { ServiceLayout } from '@/components/shared/service-layout';
 import { motion } from "framer-motion";
 import { LeadCaptureForm } from "@/components/features/lead-capture/index";
-import { Logger } from "@/lib/logger";
+import { Logger } from "@/lib/logger"; // Changed from import { Logger } to import Logger
 import { fadeIn, staggerContainer } from "@/lib/animations";
 import { CheckCircle } from "lucide-react";
 
@@ -16,25 +16,29 @@ export interface ServicePageProps {
     description: string;
   }[];
   ctaText: string;
+  imageSrc?: string; // Added optional imageSrc prop to match ServiceLayout requirements
 }
 
-export default function ServicePage({
+export function ServicePage({
   title,
   description,
   benefits,
   processSteps,
-  ctaText
+  ctaText,
+  imageSrc = "/images/default-service.jpg" // Default image if not provided
 }: ServicePageProps) {
   const logServiceView = () => {
-    Logger.event({
-      action: 'view_service_page',
-      category: 'engagement',
+    Logger.info("engagement", "view_service_page", {
       label: title,
     });
   };
 
   return (
-    <ServiceLayout>
+    <ServiceLayout
+      title={title}
+      description={description}
+      imageSrc={imageSrc}
+    >
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -78,7 +82,13 @@ export default function ServicePage({
           <h2 className="text-2xl font-semibold mb-6 text-center">
             {ctaText}
           </h2>
-          <LeadCaptureForm serviceInterest={title.split(' ')[0].toLowerCase()} />
+          <LeadCaptureForm 
+            service={
+              title.toLowerCase().includes('tax') ? 'tax-planning' : 
+              title.toLowerCase().includes('book') ? 'bookkeeping' : 
+              'financial-advisory' // Default to financial-advisory if not tax or bookkeeping
+            } 
+          />
         </motion.section>
       </motion.div>
     </ServiceLayout>

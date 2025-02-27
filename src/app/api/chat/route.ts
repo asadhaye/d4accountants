@@ -1,19 +1,88 @@
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 import { generateResponse } from "./xenova-llm";
-import { ChatMessage } from "@/lib/db/schema";
-import { clientPromise } from "@/lib/db/connect";
 import { handleError } from "@/lib/error-handling";
 import createDOMPurify from 'isomorphic-dompurify';
+import { DB_CONFIG } from "@/lib/config";
+import mongoose from "mongoose";
 
 const DOMPurify = createDOMPurify();
 
 // Input validation schema
 const chatRequestSchema = z.object({
   message: z.string().min(1, "Message cannot be empty"),
-  sessionId: z.string().min(1, "Session ID is required"),
+  sessionId: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse and validate the request
+    // Parse request body
+    const body = await request.json();
+    
+    // Validate input
+    const result = chatRequestSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid request", details: result.error.errors },
+        { status: 400 }
+      );
+    }
+    
+    const { message } = result.data;
+    const sessionId = result.data.sessionId || crypto.randomUUID();
+    
+    // Sanitize input to prevent XSS
+    const sanitizedMessage = DOMPurify.sanitize(message);
+    
+    // Generate response using the LLM
+    const responseText = await generateResponse(sanitizedMessage);
+    
+    // Sanitize the response as well
+    const sanitizedResponse = DOMPurify.sanitize(responseText);
+    
+    // Store the conversation in the database
+    try {
+      // Ensure we're connected to MongoDB
+      if (mongoose.connection.readyState !== 1) {
+        await mongoose.connect(DB_CONFIG.uri as string);
+      }
+      
+      // Store user message
+      await mongoose.connection.collection("messages").insertOne({
+        role: "user",
+        content: sanitizedMessage,
+        createdAt: new Date(),
+        sessionId,
+      });
+      
+      // Store assistant response
+      await mongoose.connection.collection("messages").insertOne({
+        role: "assistant",
+        content: sanitizedResponse,
+        createdAt: new Date(),
+        sessionId,
+      });
+    } catch (dbError) {
+      console.error("Failed to store messages:", dbError);
+      // Continue even if DB storage fails
+    }
+    
+    // Return the response
+    return NextResponse.json({
+      response: sanitizedResponse,
+      sessionId,
+    });
+  } catch (error) {
+    const errorResponse = handleError(error, {
+      category: "chat-api",
+      userMessage: "Failed to generate response",
+      additionalData: { endpoint: "/api/chat" },
+    });
+    
+    return NextResponse.json(
+      { error: errorResponse.message, details: errorResponse.details },
+      { status: errorResponse.status }
+    );
+  }
+}

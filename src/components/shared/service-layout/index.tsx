@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/lib/animations';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ interface ServiceLayoutProps {
   imageSrc: string;
 }
 
-export default function ServiceLayout({ 
+export function ServiceLayout({ 
   children, 
   title, 
   description, 
