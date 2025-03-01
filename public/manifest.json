@@ -4,8 +4,8 @@
   "description": "Professional accounting services and consultation in Manchester, UK. AI-powered support",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "background_color": "#F5F5F5",
+  "theme_color": "#2E4A8B",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",

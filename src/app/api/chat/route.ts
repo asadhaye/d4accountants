@@ -15,6 +15,11 @@ const chatRequestSchema = z.object({
   sessionId: z.string().optional(),
 });
 
+// Helper function for generating error responses
+const createErrorResponse = (message: string, details: any, status: number = 400) => {
+  return NextResponse.json({ error: message, details }, { status });
+};
+
 export async function POST(request: NextRequest) {
   try {
     // Parse request body
@@ -23,10 +28,7 @@ export async function POST(request: NextRequest) {
     // Validate input
     const result = chatRequestSchema.safeParse(body);
     if (!result.success) {
-      return NextResponse.json(
-        { error: "Invalid request", details: result.error.errors },
-        { status: 400 }
-      );
+      return createErrorResponse("Invalid request", result.error.errors);
     }
     
     const { message } = result.data;
@@ -80,9 +82,6 @@ export async function POST(request: NextRequest) {
       additionalData: { endpoint: "/api/chat" },
     });
     
-    return NextResponse.json(
-      { error: errorResponse.message, details: errorResponse.details },
-      { status: errorResponse.status }
-    );
+    return createErrorResponse(errorResponse.message, errorResponse.details, errorResponse.status);
   }
 }

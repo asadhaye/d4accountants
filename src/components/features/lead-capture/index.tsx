@@ -96,7 +96,7 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
             <Input
               {...register("serviceInterest")}
               type="hidden"
-              value={service}
+              defaultValue={service || 'tax-planning'}
             />
 
             <div>

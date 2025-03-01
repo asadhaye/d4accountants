@@ -23,7 +23,7 @@ export function Hero() {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Animated background gradients */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-900 via-purple-900 to-violet-900 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary opacity-90" />
         <motion.div
           initial={{ opacity: 0.5, scale: 0.8 }}
           animate={{
@@ -36,7 +36,7 @@ export function Hero() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-violet-500/30 to-fuchsia-500/30 blur-3xl rounded-full"
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-primary/30 to-accent/30 blur-3xl rounded-full"
         />
         <motion.div
           initial={{ opacity: 0.5, scale: 0.8 }}
@@ -50,7 +50,7 @@ export function Hero() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-violet-500/30 to-fuchsia-500/30 blur-3xl rounded-full"
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-primary/30 to-accent/30 blur-3xl rounded-full"
         />
       </div>
 
@@ -96,7 +96,7 @@ export function Hero() {
         animate="show"
       >
         <motion.h1 
-          className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600"
+          className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
           variants={fadeIn}
         >
           Expert Financial
@@ -105,7 +105,7 @@ export function Hero() {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl lg:text-3xl mb-12 max-w-3xl mx-auto text-gray-300 font-light"
+          className="text-xl md:text-2xl lg:text-3xl mb-12 max-w-3xl mx-auto text-muted-foreground font-light"
           variants={fadeIn}
         >
           Transform your financial future with our comprehensive accounting and advisory services
@@ -116,7 +116,7 @@ export function Hero() {
           variants={slideUp}
         >
           <Link href="/contact">
-            <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-6 bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:from-violet-600 hover:to-fuchsia-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               Get Started
             </Button>
           </Link>

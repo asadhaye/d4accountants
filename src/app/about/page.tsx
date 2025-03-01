@@ -3,6 +3,7 @@
 import { Container } from "@/components/ui/container";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
+import { ScrollAnimation } from "@/components/shared/scroll-animation";
 
 export default function AboutPage() {
   return (
@@ -16,61 +17,56 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <motion.h1 
-              variants={fadeIn}
-              className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600"
-            >
-              About D4Accountants
-            </motion.h1>
-            <motion.p 
-              variants={fadeIn}
-              className="text-lg md:text-xl text-gray-300 mb-8"
-            >
-              Your trusted partner in financial success. We combine expertise with innovation to deliver exceptional accounting services.
-            </motion.p>
+            <ScrollAnimation>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
+                About D4Accountants
+              </h1>
+            </ScrollAnimation>
+            
+            <ScrollAnimation index={1}>
+              <p className="text-lg md:text-xl text-gray-300 mb-8">
+                Your trusted partner in financial success. We combine expertise with innovation to deliver exceptional accounting services.
+              </p>
+            </ScrollAnimation>
           </motion.div>
 
           {/* Mission & Values */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <motion.div 
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300"
-            >
-              <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">Our Mission</h2>
-              <p className="text-gray-300 text-lg">
-                To empower businesses with accurate financial insights and innovative solutions, enabling them to make informed decisions and achieve sustainable growth.
-              </p>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300"
-            >
-              <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">Our Values</h2>
-              <ul className="space-y-4 text-gray-300 text-lg">
-                <li className="flex items-center space-x-3">
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
-                  <span>Excellence in service delivery</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
-                  <span>Integrity and transparency</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
-                  <span>Innovation in solutions</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
-                  <span>Client-centric approach</span>
-                </li>
-              </ul>
-            </motion.div>
+            <ScrollAnimation animation="scale">
+              <div className="p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
+                  Our Mission
+                </h2>
+                <p className="text-gray-300 text-lg">
+                  To empower businesses with accurate financial insights and innovative solutions, enabling them to make informed decisions and achieve sustainable growth.
+                </p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation animation="scale">
+              <div className="p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
+                  Our Values
+                </h2>
+                <ul className="space-y-4 text-gray-300 text-lg">
+                  <li className="flex items-center space-x-3">
+                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
+                    <span>Excellence in service delivery</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
+                    <span>Integrity and transparency</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
+                    <span>Innovation in solutions</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600"></span>
+                    <span>Client-centric approach</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollAnimation>
           </div>
           {/* Why Choose Us */}
           <motion.div 

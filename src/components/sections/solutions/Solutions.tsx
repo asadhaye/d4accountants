@@ -5,7 +5,7 @@ import { fadeIn, staggerContainer } from '@/lib/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from "react";
+import { Card } from '@/components/ui/card';
 
 const solutions = [
   {
@@ -64,146 +64,58 @@ const solutions = [
   },
 ];
 
-export function Solutions() {
-  const [floatingElements, setFloatingElements] = useState<Array<{ x: number, y: number, scale: number }>>([]);
-
-  useEffect(() => {
-    setFloatingElements(
-      [...Array(10)].map(() => ({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        scale: Math.random() * 0.5 + 0.5,
-      }))
-    );
-  }, []);
-
+export const Solutions = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 z-0">
-        <motion.div
-          initial={{ opacity: 0.5, scale: 0.8 }}
-          animate={{
-            opacity: [0.4, 0.6, 0.4],
-            scale: [0.8, 1.2, 0.8],
-            rotate: [0, 45, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 blur-3xl rounded-full opacity-30"
-        />
-      </div>
-
-      {/* Floating Elements */}
+    <section className="py-20 bg-background">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="absolute inset-0 z-0"
-      >
-        {floatingElements.map((element, i) => (
-          <motion.div
-            key={i}
-            initial={{
-              x: element.x,
-              y: element.y,
-              scale: element.scale,
-            }}
-            animate={{
-              y: [
-                Math.random() * element.y,
-                Math.random() * element.y,
-              ],
-              x: [
-                Math.random() * element.x,
-                Math.random() * element.x,
-              ],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute w-2 h-2 bg-white rounded-full opacity-20"
-          />
-        ))}      
-      </motion.div>
-
-      <motion.div 
+        className="container mx-auto px-6"
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="container mx-auto px-4 relative z-10"
       >
         <motion.div variants={fadeIn} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">Our Solutions</h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Professional accounting services tailored to your needs
+          <h2 className="text-4xl font-bold text-primary mb-4">Our Solutions</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Comprehensive financial services tailored to your business needs
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((solution) => (
+          {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
               variants={fadeIn}
-              className="relative group"
+              custom={index}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col border border-white/10 hover:border-violet-500/30">
-                <div className="flex items-center justify-center mb-8">
-                  <div className="p-4 rounded-2xl bg-gradient-to-br from-violet-500/10 to-fuchsia-500/10 shadow-inner">
+              <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-border">
+                <div className="p-6 flex flex-col h-full">
+                  <div className="mb-4">
                     <Image
                       src={solution.icon}
                       alt={solution.title}
                       width={48}
                       height={48}
-                      className="w-12 h-12 transform group-hover:scale-110 transition-transform duration-300"
+                      className="text-primary"
                     />
                   </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-300 text-center mb-8">
-                  {solution.description}
-                </p>
-                <div className="mt-auto text-center">
-                  <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600 mb-2">
-                    {solution.price}
-                  </div>
-                  <div className="text-violet-400/80 mb-8 font-medium">{solution.period}</div>
-                  <div className="space-y-3">
-                    {solution.options ? (
-                      <>
-                        <Link href={`${solution.href}/options`} className="block">
-                          <Button variant="outline" className="w-full bg-white/5 hover:bg-white/10 border-violet-500/30 hover:border-fuchsia-500/50 text-violet-400 hover:text-fuchsia-400">
-                            View options
-                          </Button>
-                        </Link>
-                        <Link href={solution.href} className="block">
-                          <Button variant="default" className="w-full bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:from-violet-600 hover:to-fuchsia-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                            Learn more
-                          </Button>
-                        </Link>
-                      </>
-                    ) : (
-                      <Link href={solution.href} className="block">
-                        <Button variant="default" className="w-full bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:from-violet-600 hover:to-fuchsia-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                          Learn more
-                        </Button>
-                      </Link>
-                    )}
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">{solution.title}</h3>
+                  <p className="text-muted-foreground mb-4 flex-grow">{solution.description}</p>
+                  <div className="mt-auto">
+                    <div className="text-2xl font-bold text-primary mb-2">{solution.price}</div>
+                    <p className="text-sm text-muted-foreground mb-4">{solution.period}</p>
+                    <Link href={solution.href}>
+                      <Button className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
                 </div>
-              </div>
+              </Card>
             </motion.div>
           ))}
         </div>
       </motion.div>
     </section>
   );
-}
+};

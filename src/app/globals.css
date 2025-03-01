@@ -3,23 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --background: #080808;
-  --foreground: #ffffff;
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-  --secondary: #1e293b;
-  --secondary-foreground: #ffffff;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #d946ef;
-  --accent-foreground: #ffffff;
-  --destructive: #ef4444;
+  /* New Color Palette */
+  --background: #F5F5F5; /* Light Gray */
+  --foreground: #333333; /* Dark Gray */
+
+  --primary: #2E4A8B; /* A slightly darker, more sophisticated blue */
+  --primary-foreground: #ffffff; /* White */
+
+  --secondary: #A78BFA; /* A muted purple */
+  --secondary-foreground: #ffffff; /* White */
+
+  --accent: #B8860B; /* Muted Gold */
+  --accent-foreground: #ffffff; /* White */
+
+  --muted: #9CA3AF; /* A lighter gray */
+  --muted-foreground: #374151; /* A darker gray */
+
+  --destructive: #ef4444; /* Red 500 */
   --destructive-foreground: #ffffff;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #8b5cf6;
-  --card: rgba(30, 41, 59, 0.7);
-  --card-foreground: #ffffff;
+
+  --border: #E5E7EB; /* Gray 200 */
+  --input: #F9FAFB; /* Gray 50 */
+  --ring: #2E4A8B; /* Primary Blue */
+
+  --card: #ffffff;
+  --card-foreground: #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --primary: #5979b2;
+    --primary-foreground: #0a0a0a;
+
+    --secondary: #cbbaf7;
+    --secondary-foreground: #0a0a0a;
+
+    --accent: #d6af36;
+    --accent-foreground: #0a0a0a;
+
+    --muted: #6b7280;
+    --muted-foreground: #d1d5db;
+
+    --destructive: #f87171;
+    --destructive-foreground: #0a0a0a;
+
+    --border: #4b5563;
+    --input: #374151;
+    --ring: #5979b2;
+
+    --card: #1f2937;
+    --card-foreground: #ededed;
+  }
 }
 
 @layer base {

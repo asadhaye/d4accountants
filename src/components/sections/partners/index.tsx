@@ -25,7 +25,7 @@ const partners = [
 
 export function Partners() {
   return (
-    <section className="py-12 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 z-0">
         <motion.div
@@ -40,7 +40,7 @@ export function Partners() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 blur-3xl rounded-full opacity-30"
+          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full opacity-30"
         />
       </div>
 
@@ -59,7 +59,7 @@ export function Partners() {
               className="w-full flex justify-center"
             >
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                 <Image
                   src={partner.image}
                   alt={partner.name}

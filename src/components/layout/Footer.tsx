@@ -22,7 +22,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-indigo-900 via-purple-900/90 to-indigo-900/80 border-t border-violet-500/20 backdrop-blur-sm">
+    <footer className="bg-background border-t border-border/20 backdrop-blur-sm">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -36,7 +36,7 @@ export function Footer() {
                 className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
-            <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               Professional accounting services for businesses and individuals in the UK. Trusted expertise for your financial success.
             </p>
           </div>
@@ -45,9 +45,9 @@ export function Footer() {
           <div className="space-y-6">
             <h3 className="font-semibold text-lg">Contact Us</h3>
             <div className="space-y-4">
-              <p className="text-sm text-gray-300 hover:text-white transition-colors cursor-default">Altrincham</p>
-              <a href="tel:07300300319" className="block text-sm text-gray-300 hover:text-white transition-colors">Phone: 07300 300319</a>
-              <a href="mailto:info@d4accountants.co.uk" className="block text-sm text-gray-300 hover:text-white transition-colors">Email: info@d4accountants.co.uk</a>
+              <p className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default">Altrincham</p>
+              <a href="tel:07300300319" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Phone: 07300 300319</a>
+              <a href="mailto:info@d4accountants.co.uk" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Email: info@d4accountants.co.uk</a>
             </div>
           </div>
 
@@ -64,7 +64,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-border/20">
-          <p className="text-sm text-gray-300 text-center hover:text-white transition-colors cursor-default">
+          <p className="text-sm text-muted-foreground text-center hover:text-foreground transition-colors cursor-default">
             © {currentYear} D4 Accountants. All rights reserved.
           </p>
         </div>

@@ -20,7 +20,6 @@ export function Header() {
     setIsServicesOpen(!isServicesOpen);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
@@ -42,7 +41,7 @@ export function Header() {
 
   return (
     <header 
-      className="bg-background/95 backdrop-blur-sm shadow-lg border-b border-border/20 transition-all duration-200 sticky top-0 z-50"
+      className="bg-background/95 backdrop-blur-sm border-b border-border/20 transition-all duration-200 sticky top-0 z-50"
       role="banner"
     >
       <nav className="container mx-auto px-6 py-4 max-w-7xl" aria-label="Main navigation">
@@ -56,7 +55,7 @@ export function Header() {
               height={40} 
               className="h-10 w-auto" 
             />
-            <span className="text-xl font-bold hidden sm:inline">Accountants</span>
+            <span className="text-xl font-bold hidden sm:inline text-foreground">Accountants</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -66,7 +65,7 @@ export function Header() {
             {/* Services Dropdown */}
             <div className="relative group" ref={servicesRef}>
               <button 
-                className="flex items-center gap-1 px-3 py-2 text-foreground/80 hover:text-foreground transition-colors"
+                className="flex items-center gap-1 px-3 py-2 text-muted-foreground hover:text-foreground transition-colors"
                 onClick={toggleServices}
                 aria-expanded={isServicesOpen}
                 aria-haspopup="true"
@@ -76,7 +75,7 @@ export function Header() {
               </button>
               
               <div 
-                className={`absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-gradient-to-br from-indigo-900 to-purple-900 border border-violet-500/20 overflow-hidden transition-all duration-200 origin-top-right z-50 ${
+                className={`absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-background border border-border/20 overflow-hidden transition-all duration-200 origin-top-right z-50 ${
                   isServicesOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                 }`}
                 role="menu"
@@ -87,7 +86,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                       onClick={() => {
                         setIsServicesOpen(false);
                         setIsMenuOpen(false);
@@ -99,7 +98,7 @@ export function Header() {
                   ))}
                   <Link
                     href="/services"
-                    className="block px-4 py-2 text-sm font-medium border-t border-border/20 text-primary hover:bg-primary/10"
+                    className="block px-4 py-2 text-sm font-medium border-t border-border/20 text-primary hover:bg-accent hover:text-accent-foreground"
                     onClick={() => {
                       setIsServicesOpen(false);
                       setIsMenuOpen(false);
@@ -120,12 +119,12 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button>Get Started</Button>
+            <Button variant="default">Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md text-foreground/80 hover:text-foreground focus:outline-none"
+            className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={toggleMenu}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
@@ -151,7 +150,7 @@ export function Header() {
               {/* Mobile Services Dropdown */}
               <div>
                 <button
-                  className="flex items-center justify-between w-full px-3 py-2 text-foreground/80 hover:text-foreground transition-colors"
+                  className="flex items-center justify-between w-full px-3 py-2 text-muted-foreground hover:text-foreground transition-colors"
                   onClick={toggleServices}
                   aria-expanded={isServicesOpen}
                 >
@@ -160,12 +159,12 @@ export function Header() {
                 </button>
                 
                 {isServicesOpen && (
-                  <div className="pl-4 mt-2 space-y-2 border-l-2 border-primary/20">
+                  <div className="pl-4 mt-2 space-y-2 border-l-2 border-border">
                     {serviceItems.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="block py-2 text-foreground/80 hover:text-foreground"
+                        className="block py-2 text-muted-foreground hover:text-foreground"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.name}
@@ -173,7 +172,7 @@ export function Header() {
                     ))}
                     <Link
                       href="/services"
-                      className="block py-2 text-primary font-medium"
+                      className="block py-2 text-primary hover:text-primary/80 font-medium"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       View All Services
@@ -194,7 +193,7 @@ export function Header() {
               <NavigationLink href="/contact" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </NavigationLink>
-              <Button className="w-full" onClick={() => setIsMenuOpen(false)}>
+              <Button className="w-full" variant="default" onClick={() => setIsMenuOpen(false)}>
                 Get Started
               </Button>
             </div>

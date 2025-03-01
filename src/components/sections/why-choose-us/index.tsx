@@ -16,26 +16,26 @@ const features: Feature[] = [
   {
     title: "Expert Guidance",
     description: "Our team of certified accountants provides expert advice tailored to your business needs.",
-    icon: <CheckCircle className="h-10 w-10 text-violet-400" />,
+    icon: <CheckCircle className="h-10 w-10 text-primary" />,
   },
   {
     title: "Time Efficiency",
     description: "We help you save valuable time by handling complex financial matters efficiently.",
-    icon: <Clock className="h-10 w-10 text-violet-400" />,
+    icon: <Clock className="h-10 w-10 text-primary" />,
   },
   {
     title: "Financial Security",
     description: "Ensure compliance and minimize risks with our comprehensive financial services.",
-    icon: <Shield className="h-10 w-10 text-violet-400" />,
+    icon: <Shield className="h-10 w-10 text-primary" />,
   },
   {
     title: "Growth Strategy",
     description: "Strategic financial planning to help your business achieve sustainable growth.",
-    icon: <TrendingUp className="h-10 w-10 text-violet-400" />,
+    icon: <TrendingUp className="h-10 w-10 text-primary" />,
   },
 ];
 
-export function WhyChooseUs() {
+export const WhyChooseUs = () => {
   const [floatingElements, setFloatingElements] = useState<Array<{ x: number, y: number, scale: number }>>([]);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function WhyChooseUs() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 blur-3xl rounded-full opacity-30"
+          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full opacity-30"
         />
       </div>
 
@@ -111,13 +111,13 @@ export function WhyChooseUs() {
       >
         <div className="text-center mb-12">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600"
+            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
             variants={fadeIn}
           >
             Why Choose Us
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-300 max-w-2xl mx-auto"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
             variants={fadeIn}
           >
             We combine professional expertise with personalized service to deliver exceptional value to our clients.
@@ -131,18 +131,18 @@ export function WhyChooseUs() {
               variants={fadeIn}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <Card className="relative h-full bg-white/5 backdrop-blur-xl border-white/10 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+              <Card className="relative h-full bg-card/5 backdrop-blur-xl border-border/10 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <CardHeader>
-                  <div className="mb-4 p-3 rounded-2xl bg-gradient-to-br from-violet-500/10 to-fuchsia-500/10 shadow-inner w-fit">
-                    {React.cloneElement(feature.icon, { className: 'h-10 w-10 text-violet-400' })}
+                  <div className="mb-4 p-3 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 shadow-inner w-fit">
+                    {React.cloneElement(feature.icon, { className: 'h-10 w-10 text-primary' })}
                   </div>
-                  <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">
+                  <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base text-gray-300">
+                  <CardDescription className="text-base text-muted-foreground">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -153,4 +153,4 @@ export function WhyChooseUs() {
       </motion.div>
     </section>
   );
-}
+};
