@@ -1,22 +1,15 @@
-import mongoose from 'mongoose';
-import { DB_CONFIG } from '../config';
+import { ConnectionManager } from './connection-manager';
 
-// Export only what's actually used
+// Export a singleton instance for database operations
 export async function connectToDatabase() {
-  if (mongoose.connection.readyState >= 1) {
-    return;
-  }
-  
-  if (!DB_CONFIG.uri) {
-    throw new Error('MongoDB URI is not defined');
-  }
-  
-  return mongoose.connect(DB_CONFIG.uri);
+  const connectionManager = ConnectionManager.getInstance();
+  await connectionManager.connect();
 }
 
-export function disconnectFromDatabase() {
-  return mongoose.disconnect();
+export async function disconnectFromDatabase() {
+  const connectionManager = ConnectionManager.getInstance();
+  await connectionManager.disconnect();
 }
 
-// Removed unused exports:
-// initDatabase, getDatabase, getCollection, mongooseConnection, mongoClient
+// Export ConnectionManager for advanced use cases
+export { ConnectionManager };

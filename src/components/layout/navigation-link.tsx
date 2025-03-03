@@ -25,7 +25,7 @@ export function NavigationLink({ href, children, className, onClick }: Navigatio
     href,
     className: cn(
       'nav-link',
-      isActive ? 'text-primary' : '',
+      isActive ? 'nav-link-active' : '',
       className
     )
   };

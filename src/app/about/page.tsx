@@ -1,8 +1,8 @@
 'use client';
 
-import { Container } from "@/components/ui/container";
+import { Container } from "@/components/ui/Container";
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer } from "@/lib/animations";
+import { fadeIn, staggerContainer } from "@/lib/animations/animations";
 import { ScrollAnimation } from "@/components/shared/scroll-animation";
 
 export default function AboutPage() {

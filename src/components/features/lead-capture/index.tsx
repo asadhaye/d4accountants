@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { fadeIn, slideUp } from "@/lib/animations";
+import { fadeIn, slideUp } from "@/lib/animations/animations";
 import { leadValidationSchema, type LeadFormData } from "@/lib/db/schema";
 import { useFormSubmit } from "@/hooks/use-form-submit";
 
@@ -57,7 +57,7 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
       variants={fadeIn}
       initial="hidden"
       animate="visible"
-      className="w-full max-w-md mx-auto p-6"
+      className="w-full max-w-md mx-auto p-8 bg-white/5 backdrop-blur-xl rounded-xl border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300 shadow-xl"
     >
       <div className="space-y-8">
         <motion.div variants={slideUp} className="space-y-6">

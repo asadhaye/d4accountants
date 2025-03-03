@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { fadeIn } from "@/lib/animations";
+import { fadeIn } from "@/lib/animations/animations";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;

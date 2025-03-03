@@ -1,12 +1,12 @@
 {
   "statistics": {
-    "detectionDate": "2025-02-25T22:42:37.719Z",
+    "detectionDate": "2025-03-01T11:39:27.837Z",
     "formats": {
       "typescript": {
         "sources": {
           "./src/app/api/auth/session/route.ts": {
-            "lines": 21,
-            "tokens": 188,
+            "lines": 22,
+            "tokens": 189,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -18,7 +18,7 @@
           },
           "./src/app/api/auth/_log/route.ts": {
             "lines": 28,
-            "tokens": 245,
+            "tokens": 249,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -29,8 +29,8 @@
             "newClones": 0
           },
           "./src/app/api/auth/[...nextauth]/route.ts": {
-            "lines": 58,
-            "tokens": 480,
+            "lines": 5,
+            "tokens": 54,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -78,7 +78,7 @@
           },
           "./src/app/api/leads/route.ts": {
             "lines": 77,
-            "tokens": 730,
+            "tokens": 734,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -89,8 +89,8 @@
             "newClones": 0
           },
           "./src/app/api/chat/xenova-llm.ts": {
-            "lines": 53,
-            "tokens": 350,
+            "lines": 54,
+            "tokens": 362,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -113,8 +113,8 @@
             "newClones": 0
           },
           "./src/app/api/chat/route.ts": {
-            "lines": 71,
-            "tokens": 651,
+            "lines": 87,
+            "tokens": 726,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -125,8 +125,8 @@
             "newClones": 0
           },
           "./src/lib/db/schema.ts": {
-            "lines": 55,
-            "tokens": 641,
+            "lines": 64,
+            "tokens": 533,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -137,8 +137,8 @@
             "newClones": 0
           },
           "./src/lib/db/models.ts": {
-            "lines": 64,
-            "tokens": 278,
+            "lines": 30,
+            "tokens": 215,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -149,8 +149,8 @@
             "newClones": 0
           },
           "./src/lib/db/index.ts": {
-            "lines": 132,
-            "tokens": 886,
+            "lines": 22,
+            "tokens": 133,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -173,8 +173,20 @@
             "newClones": 0
           },
           "./src/lib/ai/config.ts": {
-            "lines": 31,
-            "tokens": 154,
+            "lines": 10,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ui/index.ts": {
+            "lines": 10,
+            "tokens": 97,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -185,8 +197,8 @@
             "newClones": 0
           },
           "./src/components/features/index.ts": {
-            "lines": 4,
-            "tokens": 51,
+            "lines": 6,
+            "tokens": 77,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -209,8 +221,20 @@
             "newClones": 0
           },
           "./src/app/offline/metadata.ts": {
-            "lines": 8,
-            "tokens": 52,
+            "lines": 9,
+            "tokens": 53,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/about/metadata.ts": {
+            "lines": 6,
+            "tokens": 37,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -221,8 +245,8 @@
             "newClones": 0
           },
           "./src/lib/utils.ts": {
-            "lines": 23,
-            "tokens": 172,
+            "lines": 11,
+            "tokens": 70,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -246,7 +270,7 @@
           },
           "./src/lib/metadata.ts": {
             "lines": 29,
-            "tokens": 184,
+            "tokens": 186,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -257,8 +281,8 @@
             "newClones": 0
           },
           "./src/lib/logger.ts": {
-            "lines": 55,
-            "tokens": 490,
+            "lines": 24,
+            "tokens": 293,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -269,8 +293,8 @@
             "newClones": 0
           },
           "./src/lib/error-handling.ts": {
-            "lines": 110,
-            "tokens": 935,
+            "lines": 36,
+            "tokens": 302,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -281,8 +305,20 @@
             "newClones": 0
           },
           "./src/lib/config.ts": {
-            "lines": 42,
-            "tokens": 299,
+            "lines": 44,
+            "tokens": 113,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/lib/auth.ts": {
+            "lines": 70,
+            "tokens": 562,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -293,14 +329,14 @@
             "newClones": 0
           },
           "./src/lib/animations.ts": {
-            "lines": 94,
-            "tokens": 702,
+            "lines": 104,
+            "tokens": 744,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 2,
+            "duplicatedLines": 20,
+            "duplicatedTokens": 124,
+            "percentage": 19.23,
+            "percentageTokens": 16.67,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
@@ -317,8 +353,8 @@
             "newClones": 0
           },
           "./src/hooks/use-chat.ts": {
-            "lines": 73,
-            "tokens": 596,
+            "lines": 80,
+            "tokens": 638,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -365,8 +401,8 @@
             "newClones": 0
           },
           "./src/components/index.ts": {
-            "lines": 45,
-            "tokens": 252,
+            "lines": 40,
+            "tokens": 237,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -402,20 +438,32 @@
           }
         },
         "total": {
-          "lines": 1506,
-          "tokens": 11506,
-          "sources": 33,
-          "clones": 0,
-          "duplicatedLines": 0,
-          "duplicatedTokens": 0,
-          "percentage": 0,
-          "percentageTokens": 0,
+          "lines": 1301,
+          "tokens": 9821,
+          "sources": 36,
+          "clones": 1,
+          "duplicatedLines": 10,
+          "duplicatedTokens": 62,
+          "percentage": 0.77,
+          "percentageTokens": 0.63,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       },
       "javascript": {
         "sources": {
+          "./src/components/shared/service-page/index.tsx": {
+            "lines": 52,
+            "tokens": 470,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "./src/components/shared/service-layout/index.tsx": {
             "lines": 15,
             "tokens": 113,
@@ -489,8 +537,20 @@
             "newClones": 0
           },
           "./src/components/sections/why-choose-us/index.tsx": {
-            "lines": 27,
-            "tokens": 214,
+            "lines": 75,
+            "tokens": 502,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 79,
+            "duplicatedTokens": 496,
+            "percentage": 105.33,
+            "percentageTokens": 98.8,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/sections/testimonials/index.tsx": {
+            "lines": 52,
+            "tokens": 417,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -501,8 +561,20 @@
             "newClones": 0
           },
           "./src/components/sections/solutions/Solutions.tsx": {
-            "lines": 51,
-            "tokens": 447,
+            "lines": 35,
+            "tokens": 333,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/sections/social-proof/index.tsx": {
+            "lines": 58,
+            "tokens": 515,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -513,8 +585,8 @@
             "newClones": 0
           },
           "./src/components/sections/services/index.tsx": {
-            "lines": 55,
-            "tokens": 477,
+            "lines": 51,
+            "tokens": 473,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -524,9 +596,45 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "./src/components/sections/partners/index.tsx": {
+            "lines": 35,
+            "tokens": 246,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 17,
+            "duplicatedTokens": 113,
+            "percentage": 48.57,
+            "percentageTokens": 45.93,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "./src/components/sections/hero/index.tsx": {
-            "lines": 31,
-            "tokens": 178,
+            "lines": 88,
+            "tokens": 549,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 62,
+            "duplicatedTokens": 383,
+            "percentage": 70.45,
+            "percentageTokens": 69.76,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/layout/footer/footer-link-group.tsx": {
+            "lines": 2,
+            "tokens": 18,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/layout/footer/Footer.tsx": {
+            "lines": 27,
+            "tokens": 267,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -550,7 +658,7 @@
           },
           "./src/components/features/lead-capture/index.tsx": {
             "lines": 59,
-            "tokens": 421,
+            "tokens": 425,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -573,8 +681,8 @@
             "newClones": 0
           },
           "./src/components/features/chatbot/index.tsx": {
-            "lines": 73,
-            "tokens": 535,
+            "lines": 77,
+            "tokens": 569,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -609,8 +717,8 @@
             "newClones": 0
           },
           "./src/app/services/tax-planning/page.tsx": {
-            "lines": 75,
-            "tokens": 755,
+            "lines": 25,
+            "tokens": 85,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -621,8 +729,8 @@
             "newClones": 0
           },
           "./src/app/services/financial-advisory/page.tsx": {
-            "lines": 75,
-            "tokens": 742,
+            "lines": 25,
+            "tokens": 85,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -633,8 +741,20 @@
             "newClones": 0
           },
           "./src/app/services/bookkeeping/page.tsx": {
-            "lines": 75,
-            "tokens": 744,
+            "lines": 25,
+            "tokens": 85,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/auth/error/page.tsx": {
+            "lines": 0,
+            "tokens": 10,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -681,8 +801,8 @@
             "newClones": 0
           },
           "./src/components/ui/select.tsx": {
-            "lines": 73,
-            "tokens": 486,
+            "lines": 58,
+            "tokens": 366,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -707,6 +827,18 @@
           "./src/components/ui/input.tsx": {
             "lines": 0,
             "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ui/container.tsx": {
+            "lines": 3,
+            "tokens": 9,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -752,6 +884,54 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "./src/components/shared/service-page.tsx": {
+            "lines": 99,
+            "tokens": 736,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 249,
+            "duplicatedTokens": 1859,
+            "percentage": 251.52,
+            "percentageTokens": 252.58,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/scroll-animation.tsx": {
+            "lines": 6,
+            "tokens": 50,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/floating-action-button.tsx": {
+            "lines": 37,
+            "tokens": 310,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/error-boundary.tsx": {
+            "lines": 0,
+            "tokens": 24,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "./src/components/shared/animated-section.tsx": {
             "lines": 3,
             "tokens": 21,
@@ -776,9 +956,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "./src/components/layout/footer-link-group.tsx": {
-            "lines": 2,
-            "tokens": 18,
+          "./src/components/layout/mobile-menu.tsx": {
+            "lines": 40,
+            "tokens": 320,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -789,8 +969,20 @@
             "newClones": 0
           },
           "./src/components/layout/Header.tsx": {
-            "lines": 65,
-            "tokens": 471,
+            "lines": 142,
+            "tokens": 1086,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 56,
+            "duplicatedTokens": 482,
+            "percentage": 39.44,
+            "percentageTokens": 44.38,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/terms/page.tsx": {
+            "lines": 14,
+            "tokens": 76,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -800,9 +992,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "./src/components/layout/Footer.tsx": {
-            "lines": 27,
-            "tokens": 242,
+          "./src/app/services/page.tsx": {
+            "lines": 10,
+            "tokens": 73,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -836,18 +1028,6 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "./src/app/offline/page.tsx": {
-            "lines": 9,
-            "tokens": 84,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
           "./src/app/faq/content.tsx": {
             "lines": 52,
             "tokens": 306,
@@ -861,20 +1041,20 @@
             "newClones": 0
           },
           "./src/app/about/page.tsx": {
-            "lines": 84,
-            "tokens": 1033,
+            "lines": 131,
+            "tokens": 963,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 1,
+            "duplicatedLines": 119,
+            "duplicatedTokens": 885,
+            "percentage": 90.84,
+            "percentageTokens": 91.9,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/layout.tsx": {
-            "lines": 0,
-            "tokens": 10,
+            "lines": 1,
+            "tokens": 23,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -886,20 +1066,32 @@
           }
         },
         "total": {
-          "lines": 1164,
-          "tokens": 9644,
-          "sources": 39,
-          "clones": 0,
-          "duplicatedLines": 0,
-          "duplicatedTokens": 0,
-          "percentage": 0,
-          "percentageTokens": 0,
+          "lines": 1610,
+          "tokens": 11872,
+          "sources": 51,
+          "clones": 6,
+          "duplicatedLines": 291,
+          "duplicatedTokens": 2109,
+          "percentage": 18.07,
+          "percentageTokens": 17.76,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       },
       "tsx": {
         "sources": {
+          "./src/components/shared/service-page/index.tsx": {
+            "lines": 96,
+            "tokens": 761,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 57,
+            "percentage": 8.33,
+            "percentageTokens": 7.49,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "./src/components/shared/service-layout/index.tsx": {
             "lines": 48,
             "tokens": 298,
@@ -937,8 +1129,8 @@
             "newClones": 0
           },
           "./src/components/shared/client-wrapper/index.tsx": {
-            "lines": 36,
-            "tokens": 262,
+            "lines": 37,
+            "tokens": 274,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -950,7 +1142,7 @@
           },
           "./src/components/shared/bottom-banner/index.tsx": {
             "lines": 39,
-            "tokens": 281,
+            "tokens": 283,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -973,8 +1165,20 @@
             "newClones": 0
           },
           "./src/components/sections/why-choose-us/index.tsx": {
-            "lines": 96,
-            "tokens": 605,
+            "lines": 156,
+            "tokens": 1186,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 50,
+            "duplicatedTokens": 379,
+            "percentage": 32.05,
+            "percentageTokens": 31.96,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/sections/testimonials/index.tsx": {
+            "lines": 105,
+            "tokens": 740,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -985,20 +1189,44 @@
             "newClones": 0
           },
           "./src/components/sections/solutions/Solutions.tsx": {
-            "lines": 130,
-            "tokens": 961,
+            "lines": 121,
+            "tokens": 876,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 1,
+            "duplicatedLines": 9,
+            "duplicatedTokens": 74,
+            "percentage": 7.44,
+            "percentageTokens": 8.45,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/sections/social-proof/index.tsx": {
+            "lines": 110,
+            "tokens": 874,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 18,
+            "duplicatedTokens": 146,
+            "percentage": 16.36,
+            "percentageTokens": 16.7,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/components/sections/services/index.tsx": {
-            "lines": 119,
-            "tokens": 887,
+            "lines": 117,
+            "tokens": 879,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 9,
+            "duplicatedTokens": 74,
+            "percentage": 7.69,
+            "percentageTokens": 8.42,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/sections/partners/index.tsx": {
+            "lines": 77,
+            "tokens": 477,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1009,8 +1237,32 @@
             "newClones": 0
           },
           "./src/components/sections/hero/index.tsx": {
-            "lines": 60,
-            "tokens": 390,
+            "lines": 132,
+            "tokens": 948,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 50,
+            "duplicatedTokens": 379,
+            "percentage": 37.88,
+            "percentageTokens": 39.98,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/layout/footer/footer-link-group.tsx": {
+            "lines": 29,
+            "tokens": 202,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/layout/footer/Footer.tsx": {
+            "lines": 74,
+            "tokens": 659,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1034,7 +1286,7 @@
           },
           "./src/components/features/lead-capture/index.tsx": {
             "lines": 125,
-            "tokens": 912,
+            "tokens": 916,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1057,8 +1309,8 @@
             "newClones": 0
           },
           "./src/components/features/chatbot/index.tsx": {
-            "lines": 132,
-            "tokens": 1010,
+            "lines": 135,
+            "tokens": 1037,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1093,44 +1345,44 @@
             "newClones": 0
           },
           "./src/app/services/tax-planning/page.tsx": {
-            "lines": 131,
-            "tokens": 1079,
+            "lines": 39,
+            "tokens": 152,
             "sources": 1,
-            "clones": 9,
-            "duplicatedLines": 130,
-            "duplicatedTokens": 1111,
-            "percentage": 99.24,
-            "percentageTokens": 102.97,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/services/financial-advisory/page.tsx": {
-            "lines": 131,
-            "tokens": 1066,
+            "lines": 39,
+            "tokens": 152,
             "sources": 1,
-            "clones": 5,
-            "duplicatedLines": 68,
-            "duplicatedTokens": 586,
-            "percentage": 51.91,
-            "percentageTokens": 54.97,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/services/bookkeeping/page.tsx": {
-            "lines": 131,
-            "tokens": 1066,
+            "lines": 39,
+            "tokens": 152,
             "sources": 1,
-            "clones": 4,
-            "duplicatedLines": 62,
-            "duplicatedTokens": 525,
-            "percentage": 47.33,
-            "percentageTokens": 49.25,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/auth/error/page.tsx": {
-            "lines": 41,
-            "tokens": 310,
+            "lines": 50,
+            "tokens": 363,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1189,8 +1441,8 @@
             "newClones": 0
           },
           "./src/components/ui/select.tsx": {
-            "lines": 104,
-            "tokens": 702,
+            "lines": 107,
+            "tokens": 667,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1224,6 +1476,18 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "./src/components/ui/container.tsx": {
+            "lines": 19,
+            "tokens": 117,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "./src/components/ui/card.tsx": {
             "lines": 80,
             "tokens": 565,
@@ -1237,8 +1501,8 @@
             "newClones": 0
           },
           "./src/components/ui/button.tsx": {
-            "lines": 55,
-            "tokens": 394,
+            "lines": 57,
+            "tokens": 393,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1251,6 +1515,54 @@
           "./src/components/ui/base-input.tsx": {
             "lines": 48,
             "tokens": 302,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/service-page.tsx": {
+            "lines": 135,
+            "tokens": 961,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 57,
+            "percentage": 5.93,
+            "percentageTokens": 5.93,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/scroll-animation.tsx": {
+            "lines": 43,
+            "tokens": 298,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/floating-action-button.tsx": {
+            "lines": 75,
+            "tokens": 602,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/shared/error-boundary.tsx": {
+            "lines": 53,
+            "tokens": 412,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1274,7 +1586,7 @@
           },
           "./src/components/shared/animated-section.tsx": {
             "lines": 35,
-            "tokens": 223,
+            "tokens": 225,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1286,7 +1598,7 @@
           },
           "./src/components/providers/index.tsx": {
             "lines": 15,
-            "tokens": 89,
+            "tokens": 91,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1297,8 +1609,8 @@
             "newClones": 0
           },
           "./src/components/layout/partner-logos.tsx": {
-            "lines": 63,
-            "tokens": 384,
+            "lines": 64,
+            "tokens": 385,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1309,8 +1621,8 @@
             "newClones": 0
           },
           "./src/components/layout/navigation-link.tsx": {
-            "lines": 43,
-            "tokens": 288,
+            "lines": 45,
+            "tokens": 292,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1320,9 +1632,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "./src/components/layout/footer-link-group.tsx": {
-            "lines": 29,
-            "tokens": 202,
+          "./src/components/layout/mobile-menu.tsx": {
+            "lines": 118,
+            "tokens": 929,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1345,20 +1657,8 @@
             "newClones": 0
           },
           "./src/components/layout/Header.tsx": {
-            "lines": 103,
-            "tokens": 736,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "./src/components/layout/Footer.tsx": {
-            "lines": 74,
-            "tokens": 634,
+            "lines": 205,
+            "tokens": 1595,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1370,7 +1670,31 @@
           },
           "./src/components/about/team-member-card.tsx": {
             "lines": 10,
-            "tokens": 121,
+            "tokens": 123,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/terms/page.tsx": {
+            "lines": 108,
+            "tokens": 2758,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/services/page.tsx": {
+            "lines": 68,
+            "tokens": 486,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1383,6 +1707,18 @@
           "./src/app/resources/page.tsx": {
             "lines": 79,
             "tokens": 540,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/app/privacy-policy/page.tsx": {
+            "lines": 96,
+            "tokens": 2642,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1417,20 +1753,20 @@
             "newClones": 0
           },
           "./src/app/offline/page.tsx": {
-            "lines": 42,
-            "tokens": 297,
+            "lines": 27,
+            "tokens": 207,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 2,
+            "duplicatedLines": 17,
+            "duplicatedTokens": 122,
+            "percentage": 62.96,
+            "percentageTokens": 58.94,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/faq/page.tsx": {
-            "lines": 12,
-            "tokens": 75,
+            "lines": 18,
+            "tokens": 113,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1453,8 +1789,8 @@
             "newClones": 0
           },
           "./src/app/about/page.tsx": {
-            "lines": 106,
-            "tokens": 1178,
+            "lines": 160,
+            "tokens": 1193,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1478,7 +1814,7 @@
           },
           "./src/components/PWAInstaller.tsx": {
             "lines": 11,
-            "tokens": 75,
+            "tokens": 73,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1489,8 +1825,8 @@
             "newClones": 0
           },
           "./src/app/page.tsx": {
-            "lines": 16,
-            "tokens": 96,
+            "lines": 32,
+            "tokens": 264,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1504,17 +1840,17 @@
             "lines": 26,
             "tokens": 216,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 2,
+            "duplicatedLines": 17,
+            "duplicatedTokens": 122,
+            "percentage": 65.38,
+            "percentageTokens": 56.48,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
           "./src/app/layout.tsx": {
-            "lines": 67,
-            "tokens": 498,
+            "lines": 85,
+            "tokens": 622,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -1526,28 +1862,28 @@
           }
         },
         "total": {
-          "lines": 3230,
-          "tokens": 24071,
-          "sources": 52,
-          "clones": 9,
-          "duplicatedLines": 130,
-          "duplicatedTokens": 1111,
-          "percentage": 4.02,
-          "percentageTokens": 4.62,
+          "lines": 4380,
+          "tokens": 35629,
+          "sources": 65,
+          "clones": 8,
+          "duplicatedLines": 93,
+          "duplicatedTokens": 705,
+          "percentage": 2.12,
+          "percentageTokens": 1.98,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       }
     },
     "total": {
-      "lines": 5900,
-      "tokens": 45221,
-      "sources": 124,
-      "clones": 9,
-      "duplicatedLines": 130,
-      "duplicatedTokens": 1111,
-      "percentage": 2.2,
-      "percentageTokens": 2.46,
+      "lines": 7291,
+      "tokens": 57322,
+      "sources": 152,
+      "clones": 15,
+      "duplicatedLines": 394,
+      "duplicatedTokens": 2876,
+      "percentage": 5.4,
+      "percentageTokens": 5.02,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
@@ -1556,324 +1892,540 @@
     {
       "format": "tsx",
       "lines": 10,
-      "fragment": "'use client';\n\nimport ServiceLayout from '@/components/shared/service-layout';\nimport { motion } from \"framer-motion\";\nimport { LeadCaptureForm } from \"@/components/features/lead-capture/index\";\nimport { Logger } from \"@/lib/logger\";\nimport { fadeIn, staggerContainer } from \"@/lib/animations\";\nimport { CheckCircle } from \"lucide-react\";\n\nexport default function FinancialAdvisoryPage",
+      "fragment": ", index) => (\n            <motion.div\n              key={testimonial.name}\n              variants={fadeIn}\n              custom={index}\n              className=\"relative group\"\n            >\n              <div className=\"absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300\"></div>\n              <Card className=\"relative h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border-gray-700 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300\">\n                <CardContent className=\"p-6",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/financial-advisory/page.tsx",
-        "start": 1,
-        "end": 10,
+        "name": "src/components/sections/social-proof/index.tsx",
+        "start": 80,
+        "end": 89,
         "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
-        },
-        "endLoc": {
-          "line": 10,
-          "column": 22,
-          "position": 88
-        }
-      },
-      "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 1,
-        "end": 10,
-        "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
-        },
-        "endLoc": {
-          "line": 10,
-          "column": 16,
-          "position": 88
-        }
-      }
-    },
-    {
-      "format": "tsx",
-      "lines": 11,
-      "fragment": "\"\n    >\n      <motion.div\n        variants={staggerContainer}\n        initial=\"hidden\"\n        animate=\"show\"\n        className=\"space-y-16\"\n      >\n        {/* Introduction Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h1 className=\"text-4xl font-bold mb-6\">Financial",
-      "tokens": 0,
-      "firstFile": {
-        "name": "src/app/services/financial-advisory/page.tsx",
-        "start": 44,
-        "end": 54,
-        "startLoc": {
-          "line": 44,
-          "column": 31,
-          "position": 247
-        },
-        "endLoc": {
-          "line": 54,
-          "column": 10,
-          "position": 313
-        }
-      },
-      "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 44,
-        "end": 54,
-        "startLoc": {
-          "line": 44,
-          "column": 25,
-          "position": 247
-        },
-        "endLoc": {
-          "line": 54,
-          "column": 4,
-          "position": 313
-        }
-      }
-    },
-    {
-      "format": "tsx",
-      "lines": 35,
-      "fragment": ".\n          </p>\n        </motion.section>\n\n        {/* Benefits Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h2 className=\"text-2xl font-semibold mb-6\">Key Benefits</h2>\n          <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n            {benefits.map((benefit, index) => (\n              <motion.div\n                key={index}\n                variants={fadeIn}\n                custom={index}\n                className=\"p-8 rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-primary/20\"\n              >\n                <h3 className=\"text-xl font-semibold mb-3\">{benefit.title}</h3>\n                <ul className=\"space-y-2\">\n                  {benefit.items.map((item, i) => (\n                    <li key={i} className=\"flex items-start gap-2\">\n                      <CheckCircle className=\"h-5 w-5 text-primary flex-shrink-0 mt-0.5\" />\n                      <span>{item}</span>\n                    </li>\n                  ))}\n                </ul>\n              </motion.div>\n            ))}\n          </div>\n        </motion.section>\n\n        {/* Process Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h2 className=\"text-2xl font-semibold mb-6\">Our Approach</h2>\n          <div className=\"grid gap-6 md:grid-cols-2\">\n            <div className=\"space-y-4\">\n              <h3 className=\"text-xl font-semibold\">Financial",
-      "tokens": 0,
-      "firstFile": {
-        "name": "src/app/services/financial-advisory/page.tsx",
-        "start": 57,
-        "end": 91,
-        "startLoc": {
-          "line": 57,
-          "column": 7,
-          "position": 368
-        },
-        "endLoc": {
-          "line": 91,
-          "column": 10,
-          "position": 674
-        }
-      },
-      "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 57,
-        "end": 91,
-        "startLoc": {
-          "line": 57,
+          "line": 80,
           "column": 12,
-          "position": 371
+          "position": 599
         },
         "endLoc": {
-          "line": 91,
-          "column": 8,
-          "position": 677
-        }
-      }
-    },
-    {
-      "format": "tsx",
-      "lines": 7,
-      "fragment": ".\n              </p>\n            </div>\n            <div className=\"space-y-4\">\n              <h3 className=\"text-xl font-semibold\">Strategy Development</h3>\n              <p>\n                Based on our assessment, we develop a customized financial",
-      "tokens": 0,
-      "firstFile": {
-        "name": "src/app/services/financial-advisory/page.tsx",
-        "start": 94,
-        "end": 100,
-        "startLoc": {
-          "line": 94,
-          "column": 9,
-          "position": 725
-        },
-        "endLoc": {
-          "line": 100,
-          "column": 10,
-          "position": 788
+          "line": 89,
+          "column": 4,
+          "position": 672
         }
       },
       "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 94,
-        "end": 100,
+        "name": "src/components/sections/social-proof/index.tsx",
+        "start": 59,
+        "end": 68,
         "startLoc": {
-          "line": 94,
+          "line": 59,
           "column": 5,
-          "position": 730
+          "position": 435
         },
         "endLoc": {
-          "line": 100,
-          "column": 4,
-          "position": 793
+          "line": 68,
+          "column": 16,
+          "position": 508
         }
       }
     },
     {
       "format": "tsx",
       "lines": 10,
-      "fragment": ".\n              </p>\n            </div>\n          </div>\n        </motion.section>\n\n        {/* Lead Capture Form */}\n        <motion.section variants={fadeIn} className=\"max-w-2xl mx-auto\">\n          <h2 className=\"text-2xl font-semibold mb-6 text-center\">\n            Get Started with Financial",
+      "fragment": "\">\n      <motion.div\n        className=\"container mx-auto px-6\"\n        variants={staggerContainer}\n        initial=\"hidden\"\n        whileInView=\"show\"\n        viewport={{ once: true }}\n      >\n        <motion.div variants={fadeIn} className=\"text-center mb-16\">\n          <h2 className=\"text-4xl font-bold text-primary mb-4\">Our Services",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/financial-advisory/page.tsx",
-        "start": 115,
-        "end": 124,
+        "name": "src/components/sections/services/index.tsx",
+        "start": 94,
+        "end": 103,
         "startLoc": {
-          "line": 115,
-          "column": 7,
-          "position": 962
+          "line": 94,
+          "column": 33,
+          "position": 681
         },
         "endLoc": {
-          "line": 124,
+          "line": 103,
+          "column": 9,
+          "position": 755
+        }
+      },
+      "secondFile": {
+        "name": "src/components/sections/solutions/Solutions.tsx",
+        "start": 69,
+        "end": 78,
+        "startLoc": {
+          "line": 69,
+          "column": 20,
+          "position": 454
+        },
+        "endLoc": {
+          "line": 78,
           "column": 10,
-          "position": 1025
+          "position": 528
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 18,
+      "fragment": "={{ opacity: 0.5, scale: 0.8 }}\n          animate={{\n            opacity: [0.4, 0.6, 0.4],\n            scale: [0.8, 1.2, 0.8],\n            rotate: [0, 45, 0],\n          }}\n          transition={{\n            duration: 15,\n            repeat: Infinity,\n            ease: \"linear\",\n          }}\n          className=\"absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full opacity-30\"\n        />\n      </div>\n\n      <motion.div\n        className=\"container mx-auto px-6 relative z-10\"\n        variants={staggerContainer",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/sections/partners/index.tsx",
+        "start": 32,
+        "end": 49,
+        "startLoc": {
+          "line": 32,
+          "column": 8,
+          "position": 186
+        },
+        "endLoc": {
+          "line": 49,
+          "column": 17,
+          "position": 299
         }
       },
       "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 115,
-        "end": 124,
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 56,
+        "end": 73,
         "startLoc": {
-          "line": 115,
+          "line": 56,
           "column": 8,
-          "position": 975
+          "position": 509
         },
         "endLoc": {
-          "line": 124,
+          "line": 73,
+          "column": 2,
+          "position": 621
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 15,
+      "fragment": "={{ opacity: 0.5, scale: 0.8 }}\n          animate={{\n            opacity: [0.4, 0.6, 0.4],\n            scale: [0.8, 1.2, 0.8],\n            rotate: [0, 45, 0],\n          }}\n          transition={{\n            duration: 15,\n            repeat: Infinity,\n            ease: \"linear\",\n          }}\n          className=\"absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-primary/30 to-accent/30 blur-3xl rounded-full\"\n        />\n        <motion.div\n          initial={{ opacity: 0.5",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/sections/hero/index.tsx",
+        "start": 28,
+        "end": 42,
+        "startLoc": {
+          "line": 28,
+          "column": 8,
+          "position": 283
+        },
+        "endLoc": {
+          "line": 42,
           "column": 4,
-          "position": 1038
+          "position": 388
+        }
+      },
+      "secondFile": {
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 56,
+        "end": 73,
+        "startLoc": {
+          "line": 56,
+          "column": 8,
+          "position": 509
+        },
+        "endLoc": {
+          "line": 73,
+          "column": 2,
+          "position": 625
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 49,
+      "fragment": "45, 0],\n          }}\n          transition={{\n            duration: 15,\n            repeat: Infinity,\n            ease: \"linear\",\n          }}\n          className=\"absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-primary/30 to-accent/30 blur-3xl rounded-full\"\n        />\n      </div>\n\n      {/* Floating Elements */}\n      <motion.div\n        initial={{ opacity: 0 }}\n        animate={{ opacity: 1 }}\n        className=\"absolute inset-0 z-0\"\n      >\n        {floatingElements.map((element, i) => (\n          <motion.div\n            key={i}\n            initial={{\n              x: element.x,\n              y: element.y,\n              scale: element.scale,\n            }}\n            animate={{\n              y: [\n                Math.random() * element.y,\n                Math.random() * element.y,\n              ],\n              x: [\n                Math.random() * element.x,\n                Math.random() * element.x,\n              ],\n            }}\n            transition={{\n              duration: Math.random() * 10 + 10,\n              repeat: Infinity,\n              ease: \"linear\",\n            }}\n            className=\"absolute w-2 h-2 bg-white rounded-full opacity-20\"\n          />\n        ))}\n      </motion.div>\n\n      {/* Content */}\n      <motion.div \n        className=\"relative z-10 container mx-auto px-6 text-center\"\n        variants={staggerContainer",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/sections/hero/index.tsx",
+        "start": 46,
+        "end": 94,
+        "startLoc": {
+          "line": 46,
+          "column": 2,
+          "position": 436
+        },
+        "endLoc": {
+          "line": 94,
+          "column": 17,
+          "position": 714
+        }
+      },
+      "secondFile": {
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 60,
+        "end": 109,
+        "startLoc": {
+          "line": 60,
+          "column": 2,
+          "position": 562
+        },
+        "endLoc": {
+          "line": 109,
+          "column": 2,
+          "position": 848
+        }
+      }
+    },
+    {
+      "format": "tsx",
+      "lines": 6,
+      "fragment": " {\n  const [floatingElements, setFloatingElements] = useState<Array<{ x: number, y: number, scale: number }>>([]);\n\n  useEffect(() => {\n    setFloatingElements(\n      [...Array(20",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/sections/hero/index.tsx",
+        "start": 9,
+        "end": 14,
+        "startLoc": {
+          "line": 9,
+          "column": 2,
+          "position": 82
+        },
+        "endLoc": {
+          "line": 14,
+          "column": 3,
+          "position": 148
+        }
+      },
+      "secondFile": {
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 38,
+        "end": 43,
+        "startLoc": {
+          "line": 38,
+          "column": 3,
+          "position": 320
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 3,
+          "position": 386
         }
       }
     },
     {
       "format": "tsx",
       "lines": 10,
-      "fragment": "'use client';\n\nimport ServiceLayout from '@/components/shared/service-layout';\nimport { motion } from \"framer-motion\";\nimport { LeadCaptureForm } from \"@/components/features/lead-capture/index\";\nimport { Logger } from \"@/lib/logger\";\nimport { fadeIn, staggerContainer } from \"@/lib/animations\";\nimport { CheckCircle } from \"lucide-react\";\n\nexport default function BookkeepingPage",
+      "fragment": ")].map(() => ({\n        x: Math.random() * window.innerWidth,\n        y: Math.random() * window.innerHeight,\n        scale: Math.random() * 0.5 + 0.5,\n      }))\n    );\n  }, []);\n\n  return (\n    <section className=\"relative min-h-[90vh] flex items-center justify-center overflow-hidden",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/bookkeeping/page.tsx",
-        "start": 1,
-        "end": 10,
+        "name": "src/components/sections/hero/index.tsx",
+        "start": 14,
+        "end": 23,
         "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
+          "line": 14,
+          "column": 3,
+          "position": 149
         },
         "endLoc": {
-          "line": 10,
-          "column": 16,
-          "position": 88
+          "line": 23,
+          "column": 71,
+          "position": 246
         }
       },
       "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 1,
-        "end": 10,
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 43,
+        "end": 52,
         "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
+          "line": 43,
+          "column": 3,
+          "position": 387
         },
         "endLoc": {
-          "line": 10,
-          "column": 16,
-          "position": 88
+          "line": 52,
+          "column": 31,
+          "position": 484
         }
       }
     },
     {
       "format": "tsx",
-      "lines": 11,
-      "fragment": "\"\n    >\n      <motion.div\n        variants={staggerContainer}\n        initial=\"hidden\"\n        animate=\"show\"\n        className=\"space-y-16\"\n      >\n        {/* Introduction Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h1 className=\"text-4xl font-bold mb-6\">Bookkeeping",
+      "lines": 37,
+      "fragment": "\"\n        />\n      </div>\n\n      {/* Floating Elements */}\n      <motion.div\n        initial={{ opacity: 0 }}\n        animate={{ opacity: 1 }}\n        className=\"absolute inset-0 z-0\"\n      >\n        {floatingElements.map((element, i) => (\n          <motion.div\n            key={i}\n            initial={{\n              x: element.x,\n              y: element.y,\n              scale: element.scale,\n            }}\n            animate={{\n              y: [\n                Math.random() * element.y,\n                Math.random() * element.y,\n              ],\n              x: [\n                Math.random() * element.x,\n                Math.random() * element.x,\n              ],\n            }}\n            transition={{\n              duration: Math.random() * 10 + 10,\n              repeat: Infinity,\n              ease: \"linear\",\n            }}\n            className=\"absolute w-2 h-2 bg-white rounded-full opacity-20\"\n          />\n        ))}\n",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/bookkeeping/page.tsx",
-        "start": 44,
-        "end": 54,
+        "name": "src/components/sections/hero/index.tsx",
+        "start": 53,
+        "end": 89,
         "startLoc": {
-          "line": 44,
-          "column": 24,
-          "position": 247
+          "line": 53,
+          "column": 114,
+          "position": 473
         },
         "endLoc": {
-          "line": 54,
-          "column": 12,
-          "position": 313
+          "line": 89,
+          "column": 1,
+          "position": 689
         }
       },
       "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 44,
-        "end": 54,
+        "name": "src/components/sections/why-choose-us/index.tsx",
+        "start": 67,
+        "end": 102,
         "startLoc": {
-          "line": 44,
-          "column": 25,
-          "position": 247
+          "line": 67,
+          "column": 125,
+          "position": 599
         },
         "endLoc": {
-          "line": 54,
-          "column": 4,
-          "position": 313
+          "line": 102,
+          "column": 7,
+          "position": 815
         }
       }
     },
     {
-      "format": "tsx",
-      "lines": 35,
-      "fragment": ".\n          </p>\n        </motion.section>\n\n        {/* Benefits Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h2 className=\"text-2xl font-semibold mb-6\">Key Benefits</h2>\n          <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n            {benefits.map((benefit, index) => (\n              <motion.div\n                key={index}\n                variants={fadeIn}\n                custom={index}\n                className=\"p-8 rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-primary/20\"\n              >\n                <h3 className=\"text-xl font-semibold mb-3\">{benefit.title}</h3>\n                <ul className=\"space-y-2\">\n                  {benefit.items.map((item, i) => (\n                    <li key={i} className=\"flex items-start gap-2\">\n                      <CheckCircle className=\"h-5 w-5 text-primary flex-shrink-0 mt-0.5\" />\n                      <span>{item}</span>\n                    </li>\n                  ))}\n                </ul>\n              </motion.div>\n            ))}\n          </div>\n        </motion.section>\n\n        {/* Process Section */}\n        <motion.section variants={fadeIn} className=\"mb-12\">\n          <h2 className=\"text-2xl font-semibold mb-6\">Our Approach</h2>\n          <div className=\"grid gap-6 md:grid-cols-2\">\n            <div className=\"space-y-4\">\n              <h3 className=\"text-xl font-semibold\">Initial Setup",
+      "format": "javascript",
+      "lines": 66,
+      "fragment": "}\n                variants={fadeIn}\n                className=\"bg-gray-800/40 backdrop-blur-xl rounded-xl p-6 border border-amber-400/10 hover:border-amber-400/20 transition-all duration-300\"\n              >\n                <div className=\"flex items-start gap-4\">\n                  <CheckCircle className=\"h-6 w-6 text-amber-400 flex-shrink-0 mt-1\" />\n                  <p className=\"text-gray-300\">{benefit}</p>\n                </div>\n              </motion.div>\n            ))}\n          </div>\n        </div>\n      </motion.section>\n\n      {/* Process Steps */}\n      <motion.section\n        variants={staggerContainer}\n        initial=\"hidden\"\n        whileInView=\"show\"\n        viewport={{ once: true }}\n        className=\"py-16 px-4 sm:px-6 lg:px-8\"\n      >\n        <div className=\"max-w-7xl mx-auto\">\n          <motion.div variants={fadeIn} className=\"text-center mb-12\">\n            <h2 className=\"text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600\">\n              Our Process\n            </h2>\n          </motion.div>\n          <div className=\"grid gap-8 md:grid-cols-2 lg:grid-cols-3\">\n            {processSteps.map((step, index) => (\n              <motion.div\n                key={index}\n                variants={fadeIn}\n                className=\"relative bg-gray-800/40 backdrop-blur-xl rounded-xl p-6 border border-amber-400/10\"\n              >\n                <div className=\"absolute -top-4 -left-4 w-8 h-8 rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-600 flex items-center justify-center text-white font-bold\">\n                  {index + 1}\n                </div>\n                <h3 className=\"text-xl font-semibold text-amber-400 mb-3\">\n                  {step.title}\n                </h3>\n                <p className=\"text-gray-300\">{step.description}</p>\n              </motion.div>\n            ))}\n          </div>\n        </div>\n      </motion.section>\n\n      {/* CTA Section with Lead Capture Form */}\n      <motion.section\n        variants={staggerContainer}\n        initial=\"hidden\"\n        whileInView=\"show\"\n        viewport={{ once: true }}\n        className=\"py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-gray-800/50 backdrop-blur-xl\"\n      >\n        <div className=\"max-w-3xl mx-auto\">\n          <motion.div variants={fadeIn} className=\"text-center mb-8\">\n            <h2 className=\"text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600 mb-4\">\n              {ctaText}\n            </h2>\n            <p className=\"text-lg text-gray-300\">\n              Fill out the form below and we'll get back to you within 24 hours.\n            </p>\n          </motion.div>\n          <motion.div variants={fadeIn",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/bookkeeping/page.tsx",
-        "start": 57,
-        "end": 91,
+        "name": "src/components/shared/service-page.tsx",
+        "start": 64,
+        "end": 129,
         "startLoc": {
-          "line": 57,
-          "column": 13,
-          "position": 362
-        },
-        "endLoc": {
-          "line": 91,
+          "line": 64,
           "column": 6,
+          "position": 440
+        },
+        "endLoc": {
+          "line": 129,
+          "column": 7,
+          "position": 927
+        }
+      },
+      "secondFile": {
+        "name": "src/components/shared/service-page.tsx",
+        "start": 30,
+        "end": 95,
+        "startLoc": {
+          "line": 30,
+          "column": 17,
+          "position": 195
+        },
+        "endLoc": {
+          "line": 95,
+          "column": 6,
+          "position": 663
+        }
+      }
+    },
+    {
+      "format": "tsx",
+      "lines": 9,
+      "fragment": "interface ServicePageProps {\n  title: string;\n  description: string;\n  benefits: string[];\n  processSteps: {\n    title: string;\n    description: string;\n  }[];\n  ctaText?",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/shared/service-page.tsx",
+        "start": 8,
+        "end": 16,
+        "startLoc": {
+          "line": 8,
+          "column": 1,
+          "position": 60
+        },
+        "endLoc": {
+          "line": 16,
+          "column": 2,
+          "position": 117
+        }
+      },
+      "secondFile": {
+        "name": "src/components/shared/service-page/index.tsx",
+        "start": 10,
+        "end": 18,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 90
+        },
+        "endLoc": {
+          "line": 18,
+          "column": 2,
+          "position": 147
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 29,
+      "fragment": "}\n                      >\n                        {item.name}\n                      </Link>\n                    ))}\n                    <Link\n                      href=\"/services\"\n                      className=\"block py-2 text-primary hover:text-primary/80 font-medium\"\n                      onClick={() => setIsMenuOpen(false)}\n                    >\n                      View All Services\n                    </Link>\n                  </div>\n                )}\n              </div>\n              \n              <NavigationLink href=\"/about\" onClick={() => setIsMenuOpen(false)}>\n                About\n              </NavigationLink>\n              <NavigationLink href=\"/resources\" onClick={() => setIsMenuOpen(false)}>\n                Resources\n              </NavigationLink>\n              <NavigationLink href=\"/faq\" onClick={() => setIsMenuOpen(false)}>\n                FAQ\n              </NavigationLink>\n              <NavigationLink href=\"/contact\" onClick={() => setIsMenuOpen(false)}>\n                Contact\n              </NavigationLink>\n              <Button className=\"w-full\" variant=\"default\" onClick={() => setIsMenuOpen(false)}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/components/layout/Header.tsx",
+        "start": 168,
+        "end": 196,
+        "startLoc": {
+          "line": 168,
+          "column": 2,
+          "position": 1312
+        },
+        "endLoc": {
+          "line": 196,
+          "column": 2,
+          "position": 1553
+        }
+      },
+      "secondFile": {
+        "name": "src/components/layout/Header.tsx",
+        "start": 166,
+        "end": 190,
+        "startLoc": {
+          "line": 166,
+          "column": 5,
+          "position": 1292
+        },
+        "endLoc": {
+          "line": 190,
+          "column": 2,
+          "position": 1481
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 120,
+      "fragment": "}>\n              <p className=\"text-lg md:text-xl text-gray-300 mb-8\">\n                Your trusted partner in financial success. We combine expertise with innovation to deliver exceptional accounting services.\n              </p>\n            </ScrollAnimation>\n          </motion.div>\n\n          {/* Mission & Values */}\n          <div className=\"grid md:grid-cols-2 gap-8 mb-16\">\n            <ScrollAnimation animation=\"scale\">\n              <div className=\"p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300\">\n                <h2 className=\"text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600\">\n                  Our Mission\n                </h2>\n                <p className=\"text-gray-300 text-lg\">\n                  To empower businesses with accurate financial insights and innovative solutions, enabling them to make informed decisions and achieve sustainable growth.\n                </p>\n              </div>\n            </ScrollAnimation>\n            <ScrollAnimation animation=\"scale\">\n              <div className=\"p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300\">\n                <h2 className=\"text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600\">\n                  Our Values\n                </h2>\n                <ul className=\"space-y-4 text-gray-300 text-lg\">\n                  <li className=\"flex items-center space-x-3\">\n                    <span className=\"w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600\"></span>\n                    <span>Excellence in service delivery</span>\n                  </li>\n                  <li className=\"flex items-center space-x-3\">\n                    <span className=\"w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600\"></span>\n                    <span>Integrity and transparency</span>\n                  </li>\n                  <li className=\"flex items-center space-x-3\">\n                    <span className=\"w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600\"></span>\n                    <span>Innovation in solutions</span>\n                  </li>\n                  <li className=\"flex items-center space-x-3\">\n                    <span className=\"w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-600\"></span>\n                    <span>Client-centric approach</span>\n                  </li>\n                </ul>\n              </div>\n            </ScrollAnimation>\n          </div>\n          {/* Why Choose Us */}\n          <motion.div \n            variants={staggerContainer}\n            initial=\"hidden\"\n            whileInView=\"show\"\n            viewport={{ once: true }}\n            className=\"mb-16\"\n          >\n            <motion.h2 \n              variants={fadeIn}\n              className=\"text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600\"\n            >\n              Why Choose Us\n            </motion.h2>\n            <div className=\"grid md:grid-cols-3 gap-8\">\n              {[\n                {\n                  title: \"Expertise\",\n                  description: \"Our team brings years of experience in accounting, tax planning, and financial advisory.\"\n                },\n                {\n                  title: \"Technology-Driven\",\n                  description: \"We leverage cutting-edge technology to provide efficient and accurate services.\"\n                },\n                {\n                  title: \"Personalized Service\",\n                  description: \"Tailored solutions that meet your specific business needs and goals.\"\n                }\n              ].map((item, index) => (\n                <motion.div \n                  key={index} \n                  variants={fadeIn}\n                  className=\"p-8 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border border-gray-700 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300\"\n                >\n                  <h3 className=\"text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600\">{item.title}</h3>\n                  <p className=\"text-gray-300\">{item.description}</p>\n                </motion.div>\n              ))}\n            </div>\n          </motion.div>\n\n          {/* Team Section */}\n          <motion.div\n            variants={staggerContainer}\n            initial=\"hidden\"\n            whileInView=\"show\"\n            viewport={{ once: true }}\n          >\n            <motion.h2 \n              variants={fadeIn}\n              className=\"text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600\"\n            >\n              Our Team\n            </motion.h2>\n            <div className=\"grid md:grid-cols-3 gap-8\">\n              {[\n                {\n                  name: \"John Smith\",\n                  role: \"Managing Director\",\n                  bio: \"15+ years of experience in accounting and financial advisory.\"\n                },\n                {\n                  name: \"Sarah Johnson\",\n                  role: \"Tax Specialist\",\n                  bio: \"Expert in corporate tax planning and compliance.\"\n                },\n                {\n                  name: \"Michael Chen\",\n                  role: \"Financial Advisor\",\n                  bio: \"Specialized in business growth strategies and financial planning.\"\n                }\n              ].map((member, index) => (\n                <motion.div \n                  key={index} \n                  variants={fadeIn}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/about/page.tsx",
+        "start": 26,
+        "end": 145,
+        "startLoc": {
+          "line": 26,
+          "column": 2,
+          "position": 187
+        },
+        "endLoc": {
+          "line": 145,
+          "column": 2,
+          "position": 1072
+        }
+      },
+      "secondFile": {
+        "name": "src/components/shared/service-page.tsx",
+        "start": 36,
+        "end": 96,
+        "startLoc": {
+          "line": 36,
+          "column": 7,
+          "position": 236
+        },
+        "endLoc": {
+          "line": 96,
+          "column": 2,
           "position": 670
         }
-      },
-      "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 57,
-        "end": 91,
+      }
+    },
+    {
+      "format": "typescript",
+      "lines": 11,
+      "fragment": ",\n    transition: {\n      type: \"spring\",\n      damping: 25,\n      stiffness: 100,\n      delay: custom * 0.1,\n    }\n  }),\n  reducedMotion: {\n    opacity: 1,\n    scale",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/lib/animations.ts",
+        "start": 40,
+        "end": 50,
         "startLoc": {
-          "line": 57,
-          "column": 12,
-          "position": 371
+          "line": 40,
+          "column": 2,
+          "position": 287
         },
         "endLoc": {
-          "line": 91,
-          "column": 11,
-          "position": 679
+          "line": 50,
+          "column": 6,
+          "position": 349
+        }
+      },
+      "secondFile": {
+        "name": "src/lib/animations.ts",
+        "start": 18,
+        "end": 28,
+        "startLoc": {
+          "line": 18,
+          "column": 2,
+          "position": 132
+        },
+        "endLoc": {
+          "line": 28,
+          "column": 2,
+          "position": 194
         }
       }
     },
     {
       "format": "tsx",
-      "lines": 10,
-      "fragment": ".\n              </p>\n            </div>\n          </div>\n        </motion.section>\n\n        {/* Lead Capture Form */}\n        <motion.section variants={fadeIn} className=\"max-w-2xl mx-auto\">\n          <h2 className=\"text-2xl font-semibold mb-6 text-center\">\n            Get Started with Bookkeeping",
+      "lines": 6,
+      "fragment": "() {\n  return (\n    <AnimatedSection className=\"container mx-auto px-6 py-12\">\n      <div className=\"max-w-2xl mx-auto text-center\">\n        <div className=\"space-y-4\">\n          <h1 className=\"text-4xl font-bold\">404",
       "tokens": 0,
       "firstFile": {
-        "name": "src/app/services/bookkeeping/page.tsx",
-        "start": 115,
-        "end": 124,
+        "name": "src/app/not-found.tsx",
+        "start": 8,
+        "end": 13,
         "startLoc": {
-          "line": 115,
-          "column": 8,
-          "position": 964
+          "line": 8,
+          "column": 9,
+          "position": 49
         },
         "endLoc": {
-          "line": 124,
-          "column": 12,
-          "position": 1027
+          "line": 13,
+          "column": 4,
+          "position": 102
         }
       },
       "secondFile": {
-        "name": "src/app/services/tax-planning/page.tsx",
-        "start": 115,
-        "end": 124,
+        "name": "src/app/offline/page.tsx",
+        "start": 8,
+        "end": 13,
         "startLoc": {
-          "line": 115,
-          "column": 8,
-          "position": 975
+          "line": 8,
+          "column": 12,
+          "position": 56
         },
         "endLoc": {
-          "line": 124,
+          "line": 13,
           "column": 4,
-          "position": 1038
+          "position": 109
+        }
+      }
+    },
+    {
+      "format": "tsx",
+      "lines": 13,
+      "fragment": "\n          </p>\n          <Link href=\"/\">\n            <Button variant=\"default\" className=\"mt-4\">\n              Return Home\n            </Button>\n          </Link>\n        </div>\n      </div>\n    </AnimatedSection>\n  );\n}\n",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/app/not-found.tsx",
+        "start": 15,
+        "end": 27,
+        "startLoc": {
+          "line": 15,
+          "column": 2,
+          "position": 147
+        },
+        "endLoc": {
+          "line": 27,
+          "column": 1,
+          "position": 216
+        }
+      },
+      "secondFile": {
+        "name": "src/app/offline/page.tsx",
+        "start": 16,
+        "end": 28,
+        "startLoc": {
+          "line": 16,
+          "column": 2,
+          "position": 138
+        },
+        "endLoc": {
+          "line": 28,
+          "column": 1,
+          "position": 207
         }
       }
     }

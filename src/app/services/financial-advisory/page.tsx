@@ -1,6 +1,6 @@
 'use client';
 
-import { ServicePage } from '@/components/shared/service-page';
+import { ServicePage } from '@/components/shared/service-page/service-page';
 
 export default function FinancialAdvisoryPage() {
   return (

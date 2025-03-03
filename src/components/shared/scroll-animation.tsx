@@ -2,7 +2,7 @@
 
 import { motion, useScroll } from "framer-motion";
 import { useRef, type ReactNode } from "react";
-import { scrollFadeUp, scrollScale } from "@/lib/animations";
+import { scrollFadeUp, scrollScale } from "@/lib/animations/animations";
 
 interface ScrollAnimationProps {
   children: ReactNode;

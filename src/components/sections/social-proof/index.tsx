@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer } from "@/lib/animations";
+import { fadeIn, staggerContainer } from "@/lib/animations/animations";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 
@@ -35,7 +35,7 @@ const stats = [
 
 export function SocialProof() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <section className="py-20 bg-gradient-to-br from-violet-950 via-fuchsia-950 to-violet-950">
       <motion.div
         className="container mx-auto px-4"
         variants={staggerContainer}
@@ -47,7 +47,7 @@ export function SocialProof() {
           className="text-center mb-16"
           variants={fadeIn}
         >
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
+          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">
             Trusted by Businesses
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -63,10 +63,10 @@ export function SocialProof() {
               custom={index}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
               <Card className="relative h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border-gray-700 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-6 text-center">
-                  <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
+                  <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600">
                     {stat.value}
                   </p>
                   <p className="text-gray-300">{stat.label}</p>
@@ -84,19 +84,19 @@ export function SocialProof() {
               custom={index}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
               <Card className="relative h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 backdrop-blur-xl border-gray-700 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-amber-400 mb-4" />
+                  <Quote className="h-8 w-8 text-violet-400/20 mb-4" />
                   <p className="text-gray-300 mb-6">{testimonial.content}</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-semibold text-amber-400">{testimonial.name}</p>
+                      <p className="font-semibold text-violet-400">{testimonial.name}</p>
                       <p className="text-sm text-gray-400">{testimonial.role}</p>
                     </div>
                     <div className="flex gap-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-amber-400 fill-current" />
+                        <Star key={i} className="h-5 w-5 text-violet-400 fill-current" />
                       ))}
                     </div>
                   </div>

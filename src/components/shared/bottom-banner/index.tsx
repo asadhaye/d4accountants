@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { slideUp } from "@/lib/animations";
+import { slideUp } from "@/lib/animations/animations";
 
 interface BottomBannerProps {
   isVisible: boolean;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BaseInput } from "./base-input";
+import { BaseInput } from "./BaseInput";
 
 const Input = React.forwardRef<
   HTMLInputElement,

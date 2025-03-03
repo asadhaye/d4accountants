@@ -10,8 +10,8 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { slideUp } from "@/lib/animations";
-import { AnimatedSection } from "@/components/shared/animated-section";
+import { slideUp } from "@/lib/animations/animations";
+import { AnimatedSection } from "@/components/shared/animations/animated-section";
 
 const resources = [
   {

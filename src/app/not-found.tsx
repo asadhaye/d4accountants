@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { AnimatedSection } from '@/components/shared/animated-section';
+import { AnimatedSection } from '@/components/shared/animations/animated-section';
 
 // Move metadata and viewport to a separate metadata.ts file since they can't be used in client components
 export default function NotFound() {

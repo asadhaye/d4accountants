@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer } from '@/lib/animations';
+import { fadeIn, staggerContainer } from '@/lib/animations/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -66,7 +66,7 @@ const solutions = [
 
 export const Solutions = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-gradient-to-br from-blue-950 via-teal-950 to-blue-950">
       <motion.div
         className="container mx-auto px-6"
         variants={staggerContainer}
@@ -75,8 +75,8 @@ export const Solutions = () => {
         viewport={{ once: true }}
       >
         <motion.div variants={fadeIn} className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Our Solutions</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500 mb-4">Our Solutions</h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Comprehensive financial services tailored to your business needs
           </p>
         </motion.div>
@@ -88,7 +88,7 @@ export const Solutions = () => {
               variants={fadeIn}
               custom={index}
             >
-              <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-border">
+              <Card className="h-full flex flex-col bg-white/5 backdrop-blur-xl border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300">
                 <div className="p-6 flex flex-col h-full">
                   <div className="mb-4">
                     <Image
@@ -96,16 +96,16 @@ export const Solutions = () => {
                       alt={solution.title}
                       width={48}
                       height={48}
-                      className="text-primary"
+                      className="text-teal-400"
                     />
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">{solution.title}</h3>
-                  <p className="text-muted-foreground mb-4 flex-grow">{solution.description}</p>
+                  <h3 className="text-2xl font-semibold text-white mb-3">{solution.title}</h3>
+                  <p className="text-gray-300 mb-4 flex-grow">{solution.description}</p>
                   <div className="mt-auto">
-                    <div className="text-2xl font-bold text-primary mb-2">{solution.price}</div>
-                    <p className="text-sm text-muted-foreground mb-4">{solution.period}</p>
+                    <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500 mb-2">{solution.price}</div>
+                    <p className="text-sm text-gray-400 mb-4">{solution.period}</p>
                     <Link href={solution.href}>
-                      <Button className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+                      <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-600/90 hover:to-teal-600/90 text-white transition-all duration-300 hover:scale-105">
                         Learn More
                       </Button>
                     </Link>

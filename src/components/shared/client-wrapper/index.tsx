@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { slideUp } from "@/lib/animations";
+import { slideUp } from "@/lib/animations/animations";
 
 interface ClientWrapperProps {
   children: ReactNode;

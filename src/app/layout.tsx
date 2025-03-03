@@ -1,9 +1,12 @@
 import { Inter } from "next/font/google";
-import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
+// Remove unused imports
 import { Providers } from "@/components/providers";
-import { cn } from "@/lib/utils";
 import { ErrorBoundary } from "@/components/shared";
 import "./globals.css";
+import "@/styles/theme.css";
+import { Header } from "@/components/layout/header/Header";
+import { Footer } from "@/components/layout/footer/Footer";
+import { AnimatedBackground } from "@/components/shared/animations/animated-background";
 
 // Optimize font loading with display swap
 const inter = Inter({ 
@@ -72,12 +75,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body className={cn("min-h-screen bg-gradient-to-br from-violet-900 via-purple-900 to-violet-900 antialiased", inter.className)}>
-        <ErrorBoundary>
-          <Providers>
-            <LayoutWrapper>{children}</LayoutWrapper>
-          </Providers>
-        </ErrorBoundary>
+      <body className="min-h-screen flex flex-col relative">
+        <AnimatedBackground>
+          <ErrorBoundary>
+            <Providers>
+              <Header />
+              {children}
+              <Footer />
+            </Providers>
+          </ErrorBoundary>
+        </AnimatedBackground>
       </body>
     </html>
   );

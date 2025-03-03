@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { AnimatedSection } from "@/components/shared/animated-section";
+import { AnimatedSection } from "@/components/shared/animations/animated-section";
 
 export default function OfflinePage() {
   return (

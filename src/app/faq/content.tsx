@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { fadeIn, slideUp } from "@/lib/animations";
+import { fadeIn, slideUp } from "@/lib/animations/animations";
 import { cn } from "@/lib/utils";
 
 interface FAQItem {
