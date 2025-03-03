@@ -3,19 +3,174 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* New Color Palette */
+  --background: #F5F5F5; /* Light Gray */
+  --foreground: #333333; /* Dark Gray */
+
+  --primary: #2E4A8B; /* A slightly darker, more sophisticated blue */
+  --primary-foreground: #ffffff; /* White */
+
+  --secondary: #A78BFA; /* A muted purple */
+  --secondary-foreground: #ffffff; /* White */
+
+  --accent: #B8860B; /* Muted Gold */
+  --accent-foreground: #ffffff; /* White */
+
+  --muted: #9CA3AF; /* A lighter gray */
+  --muted-foreground: #374151; /* A darker gray */
+
+  --destructive: #ef4444; /* Red 500 */
+  --destructive-foreground: #ffffff;
+
+  --border: #E5E7EB; /* Gray 200 */
+  --input: #F9FAFB; /* Gray 50 */
+  --ring: #2E4A8B; /* Primary Blue */
+
+  --card: #ffffff;
+  --card-foreground: #333333;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --primary: #5979b2;
+    --primary-foreground: #0a0a0a;
+
+    --secondary: #cbbaf7;
+    --secondary-foreground: #0a0a0a;
+
+    --accent: #d6af36;
+    --accent-foreground: #0a0a0a;
+
+    --muted: #6b7280;
+    --muted-foreground: #d1d5db;
+
+    --destructive: #f87171;
+    --destructive-foreground: #0a0a0a;
+
+    --border: #4b5563;
+    --input: #374151;
+    --ring: #5979b2;
+
+    --card: #1f2937;
+    --card-foreground: #ededed;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply antialiased bg-background text-foreground leading-relaxed;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight mb-6;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight mb-5;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight mb-4;
+  }
+
+  p {
+    @apply text-base leading-7 mb-4 text-opacity-90;
+  }
+}
+
+@layer components {
+  /* Glass effects */
+  .glass {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-lg;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-lg rounded-xl p-6;
+  }
+
+  /* Buttons */
+  .btn-gradient {
+    @apply bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 
+           text-white shadow-md hover:shadow-lg 
+           transition-all duration-300 transform hover:scale-105 
+           rounded-lg px-6 py-3 font-medium active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80
+           transition-all duration-300 rounded-lg px-6 py-3 font-medium;
+  }
+  
+  .btn-outline {
+    @apply border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground
+           transition-colors rounded-lg px-6 py-3 font-medium;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply px-3 py-2 text-muted-foreground hover:text-foreground transition-colors;
+  }
+  
+  .nav-link-active {
+    @apply text-primary font-medium;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-input bg-background px-4 py-3
+           focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply text-foreground text-opacity-90 hover:text-foreground hover:text-opacity-100 transition-colors duration-200
+           relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5
+           after:bg-primary hover:after:w-full after:transition-all after:duration-300;
+  }
+
+  .text-faded {
+    @apply text-opacity-90;
+  }
+
+  .custom-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[rgb(59,130,246,0.5)] rounded-full;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }

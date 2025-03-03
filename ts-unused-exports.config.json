@@ -1,0 +1,17 @@
+{
+  "excludePathsFromReport": [
+    "src/app/.*\\.ts$",
+    "src/app/.*\\.tsx$",
+    ".*\\.config\\.ts$",
+    "\\.next/.*",
+    "src/app/api/.*\\.ts$",
+    "playwright\\.config\\.ts$",
+    "tailwind\\.config\\.ts$"
+  ],
+  "allowUnusedTypes": true,
+  "exitWithCount": false,
+  "ignoreFiles": [
+    "\\.d\\.ts$"
+  ],
+  "ignoreExportsUsedInFile": true
+}
