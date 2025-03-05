@@ -24,7 +24,7 @@ export function ServicePage({
   ctaText = 'Get Started',
 }: ServicePageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-950 via-fuchsia-950 to-violet-950">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-teal-950 to-blue-950">
       {/* Hero Section */}
       <motion.section
         variants={staggerContainer}
@@ -34,7 +34,7 @@ export function ServicePage({
       >
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600 mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500 mb-6">
               {title}
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
@@ -50,11 +50,11 @@ export function ServicePage({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-violet-900/50 via-fuchsia-900/50 to-violet-900/50 backdrop-blur-xl"
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900/50 via-teal-900/50 to-blue-900/50 backdrop-blur-xl"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="text-center mb-12">
-            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
+            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500">
               Key Benefits
             </h2>
           </motion.div>
@@ -63,10 +63,10 @@ export function ServicePage({
               <motion.div
                 key={index}
                 variants={fadeIn}
-                className="bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-blue-500/10 hover:border-blue-500/20 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-violet-400 flex-shrink-0 mt-1" />
+                  <CheckCircle className="h-6 w-6 text-teal-400 flex-shrink-0 mt-1" />
                   <p className="text-gray-300">{benefit}</p>
                 </div>
               </motion.div>
@@ -85,7 +85,7 @@ export function ServicePage({
       >
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="text-center mb-12">
-            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
+            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500">
               Our Process
             </h2>
           </motion.div>
@@ -94,12 +94,12 @@ export function ServicePage({
               <motion.div
                 key={index}
                 variants={fadeIn}
-                className="relative bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-violet-500/10"
+                className="relative bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300"
               >
-                <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-600 flex items-center justify-center text-white font-bold">
+                <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-teal-500 flex items-center justify-center text-white font-bold">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold text-violet-400 mb-3">
+                <h3 className="text-xl font-semibold text-teal-400 mb-3">
                   {step.title}
                 </h3>
                 <p className="text-gray-300">{step.description}</p>
@@ -115,11 +115,11 @@ export function ServicePage({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-violet-900/50 via-fuchsia-900/50 to-violet-900/50 backdrop-blur-xl"
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900/50 via-teal-900/50 to-blue-900/50 backdrop-blur-xl"
       >
         <div className="max-w-3xl mx-auto">
           <motion.div variants={fadeIn} className="text-center mb-8">
-            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600 mb-4">
+            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500 mb-4">
               {ctaText}
             </h2>
             <p className="text-lg text-gray-300">

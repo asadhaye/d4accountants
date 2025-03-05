@@ -1,18 +1,26 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useChatAuth } from "@/hooks/use-chat-auth";
-import { signIn } from "next-auth/react";
-import { fadeIn, slideUp } from "@/lib/animations";
 import { MessageCircle, X } from "lucide-react";
-import { ChatMessage } from "./chatmessage"; // Fixed import case to match the actual file
-import { ChatInput } from "./chatinput";
-import { useChat } from "@/hooks/use-chat";
-import { ErrorBoundary } from "@/components/shared/error-boundary";
+import { signIn } from "next-auth/react";
+
+// Local imports
+import { ChatMessage } from "./ChatMessage";
+import { ChatInput } from "./ChatInput";
+
+// UI Components (Ensure these exist in your project)
+import { Button } from "./components/ui/button"; // ✅ Fixed Button Import
+import { Card } from "@/components/ui/card";
+import { ScrollArea } from "../ui/scroll-area";
+import { ErrorBoundary } from "../shared/error-boundary/error-boundary";
+
+// Hooks (Ensure these exist in your hooks directory)
+import { useChatAuth } from "@/hooks/index";
+import { useChat } from "./hooks/use-chat";
+
+// Animations (Ensure animations exist in this path)
+import { animations } from "@/lib/styles/design-system";
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +34,6 @@ export function ChatBot() {
   } = useChat();
 
   useEffect(() => {
-    // Scroll to bottom when messages change
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
         top: scrollRef.current.scrollHeight,
@@ -64,7 +71,7 @@ export function ChatBot() {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              variants={fadeIn}
+              variants={animations.fadeIn}
               className="fixed bottom-4 right-4 z-50 w-80 sm:w-96"
             >
               <Card className="overflow-hidden shadow-xl border-2 border-border">
@@ -82,30 +89,32 @@ export function ChatBot() {
                 </div>
 
                 {/* Chat messages */}
-                <ScrollArea className="h-80 p-4" ref={scrollRef}>
-                  {messages.length === 0 ? (
-                    <motion.p 
-                      variants={slideUp} 
-                      className="text-muted-foreground text-center py-8"
-                    >
-                      How can we help you today?
-                    </motion.p>
-                  ) : (
-                    messages.map((message, index) => (
-                      <ChatMessage key={index} message={message} />
-                    ))
-                  )}
-                  {isLoading && (
-                    <div className="flex justify-start">
-                      <div className="bg-secondary text-secondary-foreground max-w-[80%] rounded-xl px-4 py-2">
-                        <div className="flex space-x-2">
-                          <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce" />
-                          <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.2s]" />
-                          <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.4s]" />
+                <ScrollArea className="h-80 p-4">
+                  <div ref={scrollRef}> {/* ✅ Fix: Moved ref inside ScrollArea */}
+                    {messages.length === 0 ? (
+                      <motion.p 
+                        variants={animations.slideUp} 
+                        className="text-muted-foreground text-center py-8"
+                      >
+                        How can we help you today?
+                      </motion.p>
+                    ) : (
+                      messages.map((message, index) => (
+                        <ChatMessage key={index} message={message} />
+                      ))
+                    )}
+                    {isLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-secondary text-secondary-foreground max-w-[80%] rounded-xl px-4 py-2">
+                          <div className="flex space-x-2">
+                            <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce" />
+                            <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.2s]" />
+                            <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.4s]" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </ScrollArea>
 
                 {/* Chat input */}
@@ -133,3 +142,5 @@ export function ChatBot() {
     </ErrorBoundary>
   );
 }
+
+export { ChatBot as default, ChatInput, ChatMessage };

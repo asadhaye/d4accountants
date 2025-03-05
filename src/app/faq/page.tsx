@@ -1,5 +1,5 @@
 import { createPageMetadata } from '@/lib/metadata';
-import { FAQContent } from '@/app/faq/content';
+import { FAQContent } from '@/components/pages/faq/faq-content';
 
 export const metadata = createPageMetadata(
   'FAQ - D4 Accountants',

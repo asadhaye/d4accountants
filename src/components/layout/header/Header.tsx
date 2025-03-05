@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { NavigationLink } from '@/components/layout/navigation-link';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import { ChatInterface } from '@/components/features/chat-bot/chat-interface';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -155,6 +156,9 @@ export function Header() {
             <NavigationLink href="/resources">Resources</NavigationLink>
             <NavigationLink href="/faq">FAQ</NavigationLink>
             <NavigationLink href="/contact">Contact</NavigationLink>
+            
+            {/* Chat Interface */}
+            <ChatInterface />
           </div>
 
           {/* CTA Button */}
@@ -197,27 +201,23 @@ export function Header() {
               Home
             </NavigationLink>
             
-            {/* Mobile Services Dropdown */}
+            {/* Mobile Services Menu */}
             <div>
               <button
-                className="flex items-center justify-between w-full px-3 py-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                className="w-full flex items-center justify-between nav-link"
                 onClick={toggleServices}
                 aria-expanded={isServicesOpen}
-                aria-controls="mobile-services-menu"
               >
                 Services
                 <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               
-              <div 
-                id="mobile-services-menu"
-                className={`pl-4 mt-2 space-y-2 border-l-2 border-blue-500/20 transition-all duration-200 ${isServicesOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 overflow-hidden'}`}
-              >
+              <div className={`mt-2 space-y-2 pl-4 ${isServicesOpen ? 'block' : 'hidden'}`}>
                 {serviceItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block py-2 text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                    className="block py-2 text-sm text-gray-300 hover:text-white"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -225,7 +225,7 @@ export function Header() {
                 ))}
                 <Link
                   href="/services"
-                  className="block py-2 text-teal-400 hover:text-teal-300 font-medium focus:outline-none focus:text-teal-300"
+                  className="block py-2 text-sm font-medium text-teal-400 hover:text-teal-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   View All Services
@@ -245,9 +245,16 @@ export function Header() {
             <NavigationLink href="/contact" onClick={() => setIsMenuOpen(false)}>
               Contact
             </NavigationLink>
+            
+            {/* Mobile Chat Interface */}
+            <div className="pt-2 border-t border-blue-500/20">
+              <ChatInterface />
+            </div>
+
+            {/* Mobile CTA */}
             <Button 
-              className="w-full bg-gradient-to-r from-blue-400 to-teal-500 hover:from-blue-400/90 hover:to-teal-500/90 text-white" 
-              variant="default" 
+              variant="default"
+              className="w-full bg-gradient-to-r from-blue-400 to-teal-500 hover:from-blue-400/90 hover:to-teal-500/90 text-white"
               onClick={() => setIsMenuOpen(false)}
             >
               Get Started

@@ -13,54 +13,68 @@ describe("POST /api/leads", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-
-  it("successfully captures a valid lead", async () => {
-    const validLead = {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      phone: "1234567890",
-      message: "Test message",
-      serviceInterest: "tax-planning", // Added to match schema
-    };
-
-    const request = new NextRequest("http://localhost:3000/api/leads", {
-      method: "POST",
-      body: JSON.stringify(validLead),
+  
+    // Successfully captures a valid lead with all required fields
+    it('should successfully capture a lead with all required fields', async () => {
+      const validLead = {
+        name: "Jane Smith",
+        email: "jane.smith@example.com",
+        phone: "9876543210",
+        message: "I need help with my taxes",
+        serviceInterest: "tax-planning",
+      };
+  
+      const request = new NextRequest("http://localhost:3000/api/leads", {
+        method: "POST",
+        body: JSON.stringify(validLead),
+      });
+  
+      const response = await POST(request);
+      const data = await response.json();
+  
+      expect(response.status).toBe(201);
+      expect(data).toEqual(
+        expect.objectContaining({
+          message: "Lead captured successfully",
+        })
+      );
+  
+      // Verify security headers are present
+      expect(response.headers.get('Content-Security-Policy')).toBe("default-src 'self'");
+      expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
+      expect(response.headers.get('X-Frame-Options')).toBe('DENY');
     });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(201); // Updated to match route.ts
-    expect(data).toEqual(
-      expect.objectContaining({
-        message: "Lead captured successfully",
-      })
-    );
-  });
-
-  it("returns an error for invalid data", async () => {
-    const invalidLead = {
-      name: "", // Empty name should fail validation
-      email: "invalid-email", // Invalid email format
-      phone: "123", // Too short phone number
-    };
-
-    const request = new NextRequest("http://localhost:3000/api/leads", {
-      method: "POST",
-      body: JSON.stringify(invalidLead),
+  
+     // Rejects requests with invalid email format
+     it('should reject requests with invalid email format', async () => {
+      const invalidLead = {
+        name: "John Doe",
+        email: "not-an-email", // Invalid email format
+        phone: "1234567890",
+        message: "Test message",
+        serviceInterest: "tax-planning",
+      };
+  
+      const request = new NextRequest("http://localhost:3000/api/leads", {
+        method: "POST",
+        body: JSON.stringify(invalidLead),
+      });
+  
+      const response = await POST(request);
+      const data = await response.json();
+  
+      expect(response.status).toBe(400);
+      expect(data).toEqual(
+        expect.objectContaining({
+          error: "Validation failed",
+          details: expect.arrayContaining([
+            expect.objectContaining({
+              path: expect.arrayContaining(["email"])
+            })
+          ])
+        })
+      );
     });
-
-    const response = await POST(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(data).toEqual(
-      expect.objectContaining({
-        error: expect.any(String),
-      })
-    );
-  });
 
   it("handles database connection errors", async () => {
     jest.spyOn(global, "fetch").mockRejectedValue(new Error("Network error")); // Simulate fetch failure

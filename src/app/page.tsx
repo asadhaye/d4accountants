@@ -13,7 +13,7 @@ import {
 } from '@/components/sections';
 import { AnimatedSection } from '@/components/shared/animations/animated-section';
 
-export default function Home() {
+const HomeContent = () => {
   return (
     <main className="flex-1">
       <Hero />
@@ -29,4 +29,8 @@ export default function Home() {
       <CTASection />
     </main>
   );
+};
+
+export default function Home() {
+  return <HomeContent />;
 }

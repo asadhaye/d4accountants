@@ -1,16 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-interface CustomUser {
-  id: string;
-  email: string;
-  name: string;
-}
-
-interface CustomToken {
-  id?: string;
-  [key: string]: unknown;
-}
+import type { CustomUser, CustomToken } from "./types";
 
 if (!process.env.NEXTAUTH_SECRET) {
   throw new Error('Please define NEXTAUTH_SECRET environment variable');

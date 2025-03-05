@@ -1,9 +1,6 @@
 import type { Variants } from 'framer-motion';
 
-export interface AnimationVariant {
-  hidden: Variants['hidden'];
-  visible: Variants['visible'];
-}
+export type AnimationVariant = Variants
 
 export interface StaggerConfig {
   delayChildren?: number;

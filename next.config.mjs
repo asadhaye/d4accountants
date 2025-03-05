@@ -1,4 +1,4 @@
-import withPWAInit from '@ducanh2912/next-pwa';
+import withSerwistInit from '@serwist/next';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,9 +9,16 @@ const nextConfig = {
         fs: false,
         path: false,
         child_process: false,
-        crypto: false,
+        crypto: 'crypto-browserify',
         stream: false,
         os: false,
+        assert: 'assert',
+        events: 'events',
+        'node:crypto': 'crypto-browserify',
+        'node:assert': 'assert',
+        'node:events': 'events',
+        'node:fs': false,
+        'node:fs/promises': false,
       };
     }
     return config;
@@ -20,26 +27,10 @@ const nextConfig = {
   output: 'standalone',
 };
 
-const withPWA = withPWAInit({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-  runtimeCaching: [
-    {
-      urlPattern: /^https?.*/,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'offlineCache',
-        expiration: {
-          maxEntries: 200,
-          maxAgeSeconds: 24 * 60 * 60,
-        },
-      },
-    },
-  ],
+const withSerwist = withSerwistInit({
+  swSrc: 'src/app/sw.ts',
+  swDest: 'public/sw.js',
+  disable: process.env.NODE_ENV === 'development'
 });
 
-export default withPWA(nextConfig);
-
-
+export default withSerwist(nextConfig);

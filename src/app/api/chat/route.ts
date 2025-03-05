@@ -1,11 +1,11 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { z } from "zod";
-import { generateResponse } from "./xenova-llm";
-import { handleError } from "@/lib/error-handling";
+import { NextResponse } from 'next/server';
+import { z } from 'zod';
+import { handleError } from '@/lib/errors';
 import createDOMPurify from 'isomorphic-dompurify';
-import { DB_CONFIG } from "@/lib/config";
-import mongoose from "mongoose";
+import { DB_CONFIG } from '@/lib/config';
+import mongoose from 'mongoose';
+import { Conversation } from './models/conversation';
+import { generateResponse } from './llm-service';
 
 const DOMPurify = createDOMPurify();
 
@@ -13,14 +13,19 @@ const DOMPurify = createDOMPurify();
 const chatRequestSchema = z.object({
   message: z.string().min(1, "Message cannot be empty"),
   sessionId: z.string().optional(),
+  useOpenAI: z.boolean().optional(),
 });
 
 // Helper function for generating error responses
-const createErrorResponse = (message: string, details: any, status: number = 400) => {
+const createErrorResponse = (
+  message: string, 
+  details: unknown, 
+  status: number = 400
+) => {
   return NextResponse.json({ error: message, details }, { status });
 };
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
     // Parse request body
     const body = await request.json();
@@ -37,51 +42,77 @@ export async function POST(request: NextRequest) {
     // Sanitize input to prevent XSS
     const sanitizedMessage = DOMPurify.sanitize(message);
     
-    // Generate response using the LLM
-    const responseText = await generateResponse(sanitizedMessage);
-    
-    // Sanitize the response as well
-    const sanitizedResponse = DOMPurify.sanitize(responseText);
-    
-    // Store the conversation in the database
-    try {
-      // Ensure we're connected to MongoDB
-      if (mongoose.connection.readyState !== 1) {
-        await mongoose.connect(DB_CONFIG.uri as string);
-      }
-      
-      // Store user message
-      await mongoose.connection.collection("messages").insertOne({
-        role: "user",
-        content: sanitizedMessage,
-        createdAt: new Date(),
-        sessionId,
-      });
-      
-      // Store assistant response
-      await mongoose.connection.collection("messages").insertOne({
-        role: "assistant",
-        content: sanitizedResponse,
-        createdAt: new Date(),
-        sessionId,
-      });
-    } catch (dbError) {
-      console.error("Failed to store messages:", dbError);
-      // Continue even if DB storage fails
+    // Ensure MongoDB connection
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(DB_CONFIG.uri as string);
     }
+
+    // Get or create conversation
+    let conversation = await Conversation.findOne({ sessionId });
+    if (!conversation) {
+      conversation = new Conversation({ sessionId, messages: [] });
+    }
+
+    // Add user message to conversation
+    conversation.messages.push({
+      role: 'user',
+      content: sanitizedMessage,
+      createdAt: new Date(),
+    });
+
+    // Generate response using the LLM service
+    const { text: responseText, source } = await generateResponse(
+      conversation.messages
+    );
     
-    // Return the response
-    return NextResponse.json({
-      response: sanitizedResponse,
+    // Sanitize the response
+    const sanitizedResponse = DOMPurify.sanitize(responseText);
+
+    // Add assistant's response to conversation
+    conversation.messages.push({
+      role: 'assistant',
+      content: sanitizedResponse,
+      createdAt: new Date(),
+    });
+
+    // Save the conversation
+    await conversation.save();
+
+    // Create response with session ID and model source
+    const response = NextResponse.json({
+      message: sanitizedResponse,
       sessionId,
+      modelSource: source,
+    });
+
+    // Add session ID to headers for client tracking
+    response.headers.set('X-Session-Id', sessionId);
+    response.headers.set('X-Model-Source', source);
+    
+    return response;
+  } catch (error) {
+    handleError(error as Error, {
+      category: 'chat',
+      userMessage: 'Failed to process chat request.',
+    });
+    return createErrorResponse("Internal server error", {}, 500);
+  }
+}
+
+// Test endpoint to verify model functionality
+export async function GET() {
+  try {
+    const { text, source } = await generateResponse([{
+      role: 'user',
+      content: 'What services do you provide for UK businesses?'
+    }]);
+    return NextResponse.json({ 
+      success: true, 
+      message: text,
+      modelSource: source,
     });
   } catch (error) {
-    const errorResponse = handleError(error, {
-      category: "chat-api",
-      userMessage: "Failed to generate response",
-      additionalData: { endpoint: "/api/chat" },
-    });
-    
-    return createErrorResponse(errorResponse.message, errorResponse.details, errorResponse.status);
+    console.error('Test endpoint error:', error);
+    return NextResponse.json({ success: false, error: (error as Error).message });
   }
 }

@@ -57,7 +57,7 @@ export function LeadCaptureForm({ service }: LeadCaptureFormProps) {
       variants={fadeIn}
       initial="hidden"
       animate="visible"
-      className="w-full max-w-md mx-auto p-8 bg-white/5 backdrop-blur-xl rounded-xl border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300 shadow-xl"
+      className="w-full max-w-md mx-auto p-8 bg-gradient-to-br from-blue-900/50 via-teal-900/50 to-blue-900/50 backdrop-blur-xl rounded-xl border border-blue-500/10 hover:border-teal-500/20 transition-all duration-300 shadow-xl"
     >
       <div className="space-y-8">
         <motion.div variants={slideUp} className="space-y-6">

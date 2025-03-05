@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { handleError } from '@/lib/error-handling';
+import { handleError } from '@/lib/errors';
 
 export function PortalContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

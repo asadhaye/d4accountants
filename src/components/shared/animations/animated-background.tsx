@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useFloatingElements } from "@/hooks/use-floating-elements";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface AnimatedBackgroundProps {
   children: ReactNode;
@@ -11,49 +11,62 @@ interface AnimatedBackgroundProps {
 
 export function AnimatedBackground({ 
   children, 
-  floatingElementsCount = 20 
+  floatingElementsCount = 10 
 }: AnimatedBackgroundProps) {
+  const prefersReducedMotion = useReducedMotion();
   const floatingElements = useFloatingElements(floatingElementsCount);
+
+  // Disable animations if user prefers reduced motion
+  if (prefersReducedMotion) {
+    return (
+      <div className="relative min-h-screen overflow-hidden">
+        <div className="fixed inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-teal-950 to-blue-950 opacity-90" />
+        </div>
+        <div className="relative z-10">{children}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Animated background gradients */}
+      {/* Animated background gradients - optimized for performance */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-teal-950 to-blue-950 opacity-90" />
         <motion.div
-          initial={{ opacity: 0.5, scale: 0.8 }}
+          initial={{ opacity: 0.4 }}
           animate={{
-            opacity: [0.4, 0.6, 0.4],
-            scale: [0.8, 1.2, 0.8],
-            rotate: [0, 45, 0],
+            opacity: [0.3, 0.4, 0.3],
+            scale: [0.9, 1.1, 0.9],
           }}
           transition={{
-            duration: 15,
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
+            times: [0, 0.5, 1],
           }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/20 to-teal-500/20 blur-3xl rounded-full"
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/20 to-teal-500/20 blur-3xl rounded-full transform-gpu"
         />
         <motion.div
-          initial={{ opacity: 0.5, scale: 0.8 }}
+          initial={{ opacity: 0.4 }}
           animate={{
-            opacity: [0.4, 0.6, 0.4],
-            scale: [1.2, 0.8, 1.2],
-            rotate: [0, -45, 0],
+            opacity: [0.3, 0.4, 0.3],
+            scale: [1.1, 0.9, 1.1],
           }}
           transition={{
-            duration: 15,
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
+            times: [0, 0.5, 1],
           }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-blue-500/20 to-teal-500/20 blur-3xl rounded-full"
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-blue-500/20 to-teal-500/20 blur-3xl rounded-full transform-gpu"
         />
       </div>
 
-      {/* Floating Elements */}
+      {/* Floating Elements - optimized with transform-gpu */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: 0.5 }}
         className="fixed inset-0 z-0 pointer-events-none"
       >
         {floatingElements.map((element, i) => (
@@ -65,27 +78,22 @@ export function AnimatedBackground({
               scale: element.scale,
             }}
             animate={{
-              y: [
-                Math.random() * element.y,
-                Math.random() * element.y,
-              ],
-              x: [
-                Math.random() * element.x,
-                Math.random() * element.x,
-              ],
+              y: [element.y - 50, element.y + 50],
+              x: [element.x - 50, element.x + 50],
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: 15 + i * 2,
               repeat: Infinity,
               ease: "linear",
+              yoyo: true,
             }}
-            className="absolute w-2 h-2 bg-white rounded-full opacity-20"
+            className="absolute w-2 h-2 bg-white rounded-full opacity-20 transform-gpu will-change-transform"
           />
         ))}
       </motion.div>
 
       {/* Content with glass morphism effect */}
-      <div className="relative z-10">
+      <div className="relative z-10 backdrop-blur-none">
         {children}
       </div>
     </div>

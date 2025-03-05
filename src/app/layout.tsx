@@ -1,12 +1,11 @@
 import { Inter } from "next/font/google";
-// Remove unused imports
 import { Providers } from "@/components/providers";
 import { ErrorBoundary } from "@/components/shared";
 import "./globals.css";
 import "@/styles/theme.css";
 import { Header } from "@/components/layout/header/Header";
 import { Footer } from "@/components/layout/footer/Footer";
-import { AnimatedBackground } from "@/components/shared/animations/animated-background";
+import { AnimatedBackground } from "@/components/shared/animations";
 
 // Optimize font loading with display swap
 const inter = Inter({ 
@@ -27,6 +26,7 @@ export const metadata = {
   authors: [{ name: "D4 Accountants", url: "https://d4accountants.com" }],
   creator: "D4 Accountants",
   publisher: "D4 Accountants",
+  manifest: "/manifest.json",
   robots: {
     index: true,
     follow: true,
@@ -59,8 +59,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" }
+    { media: "(prefers-color-scheme: light)", color: "#2E4A8B" },
+    { media: "(prefers-color-scheme: dark)", color: "#2E4A8B" }
   ],
   width: "device-width",
   initialScale: 1,
@@ -75,6 +75,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <head>
+        <meta name="theme-color" content="#2E4A8B" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+      </head>
       <body className="min-h-screen flex flex-col relative">
         <AnimatedBackground>
           <ErrorBoundary>

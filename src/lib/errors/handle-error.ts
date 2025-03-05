@@ -1,12 +1,12 @@
 import { ZodError } from "zod";
-import { Logger } from "../logger/logger";
+import { Logger, type LogCategory } from "../logger";
 import type { ErrorHandlingOptions } from "./types";
 
 export function handleError(error: unknown, options: ErrorHandlingOptions) {
   const { category, userMessage, logLevel = "error", additionalData } = options;
   
   if (error instanceof ZodError) {
-    Logger.warn(category, "Validation failed", {
+    Logger.warn(category as LogCategory, "Validation failed", {
       errors: error.errors,
       ...additionalData,
     });
@@ -17,7 +17,7 @@ export function handleError(error: unknown, options: ErrorHandlingOptions) {
     };
   }
   
-  Logger[logLevel](category, error instanceof Error ? error.message : String(error), additionalData);
+  Logger[logLevel](category as LogCategory, error instanceof Error ? error.message : String(error), additionalData);
   
   return {
     status: 500,

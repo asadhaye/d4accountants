@@ -1,15 +1,22 @@
 import mongoose from 'mongoose';
-import type { BaseDocument } from '../types/mongoose';
-import { leadValidationSchema } from '../validation/lead';
-import type { LeadInput } from '../types/lead';
+import type { Document } from 'mongoose';
+import type { LeadFormData } from '../validation/lead';
 
-export interface ILead extends BaseDocument, LeadInput {}
+export interface ILead extends Document, LeadFormData {}
 
 const leadSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { 
+    type: String, 
+    required: true,
+    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email address']
+  },
   phone: { type: String, required: true },
-  serviceInterest: { type: String, required: true },
+  serviceInterest: { 
+    type: String, 
+    required: true,
+    enum: ['tax-planning', 'financial-advisory', 'bookkeeping']
+  },
   message: { type: String },
 }, {
   timestamps: true

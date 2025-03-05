@@ -1,17 +1,17 @@
-import type { LogLevel, LogCategory } from './types';
+import { type LogCategory } from './types';
 
-export const Logger = {
-  error: (category: LogCategory, message: string, data?: Record<string, unknown>) => {
-    console.error(`[ERROR][${category}] ${message}`, data || '');
-  },
-  
-  warn: (category: LogCategory, message: string, data?: Record<string, unknown>) => {
-    console.warn(`[WARN][${category}] ${message}`, data || '');
-  },
-  
-  info: (category: LogCategory, message: string, data?: Record<string, unknown>) => {
-    console.info(`[INFO][${category}] ${message}`, data || '');
+export { type LogCategory, type LogLevel } from './types';
+
+export class Logger {
+  static info(category: LogCategory, message: string, meta?: object): void {
+    console.info(`[${category}] ${message}`, meta);
   }
-};
 
-export type { LogLevel, LogCategory } from './types';
+  static warn(category: LogCategory, message: string, meta?: object): void {
+    console.warn(`[${category}] ${message}`, meta);
+  }
+
+  static error(category: LogCategory, message: string, meta?: object): void {
+    console.error(`[${category}] ${message}`, meta);
+  }
+}

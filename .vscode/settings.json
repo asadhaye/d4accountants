@@ -10,5 +10,6 @@
     "plaintext": "html",
     "typescript": "javascript",
     "typescriptreact": "javascript"
-  }
+  },
+  "codium.codeCompletion.enable": true
 }

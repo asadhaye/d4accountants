@@ -3,18 +3,18 @@ import { clientPromise } from "@/lib/db/connect";
 import { Lead } from "@/lib/db/schema";
 import { z } from "zod";
 import createDOMPurify from 'isomorphic-dompurify';
-import { Logger } from "@/lib/logger/logger";
+import { Logger } from "@/lib/logger/index";
+import { rateLimit } from '@/lib/rateLimit'
 
 const DOMPurify = createDOMPurify();
 
 const leadSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  phone: z.string().min(10),
-  serviceInterest: z.string().min(1),
-  message: z.string().optional(),
-});
-
+  name: z.string().trim().min(2).max(100),
+  email: z.string().email().max(255),
+  phone: z.string().min(10).max(20),
+  serviceInterest: z.string().trim().min(1).max(500),
+  message: z.string().optional().transform(val => val || null),
+})
 type LeadInput = z.infer<typeof leadSchema>;
 
 const sanitizeInput = (input: Record<string, unknown>) => {
@@ -30,10 +30,28 @@ const sanitizeInput = (input: Record<string, unknown>) => {
 };
 
 export async function POST(request: Request) {
+  const MAX_REQUEST_SIZE = 1024 * 10 // 10KB
+
+  // Implement rate limiting
+  try {
+    const isAllowed = await rateLimit();
+    
+    if (!isAllowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+  } catch {
+    return NextResponse.json({ error: "Rate limit error" }, { status: 500 });
+  }
+
+  const contentLength = request.headers.get("content-length")
+  if (contentLength && parseInt(contentLength) > MAX_REQUEST_SIZE) {
+    return NextResponse.json({ error: "Request too large" }, { status: 413 })
+  }
+
   let body;
   try {
     body = await request.json();
-    Logger.info("lead-submission", `Received lead submission from ${body.email}`);
+    Logger.info("api", `Received lead submission from ${body.email}`);
 
     const sanitizedData = sanitizeInput(body);
     const validatedData = leadSchema.parse(sanitizedData) as LeadInput;
@@ -46,15 +64,21 @@ export async function POST(request: Request) {
     });
     await lead.save();
 
-    Logger.info("lead-capture", `Lead captured successfully from ${validatedData.email} for service: ${validatedData.serviceInterest}`);
+    Logger.info("api", `Lead captured successfully from ${validatedData.email} for service: ${validatedData.serviceInterest}`);
+
+    const headers = {
+      'Content-Security-Policy': "default-src 'self'",
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY'
+    }
 
     return NextResponse.json(
       { message: "Lead captured successfully" },
-      { status: 201 },
+      { status: 201, headers }
     );
   } catch (error) {
     if (error instanceof z.ZodError) {
-      Logger.warn("lead-validation", "Lead validation failed", {
+      Logger.warn("validation", "Lead validation failed", {
         errors: error.errors,
         input: body,
       });
@@ -65,7 +89,7 @@ export async function POST(request: Request) {
     }
 
     const err = error as Error;
-    Logger.error("lead-processing", "Failed to process lead", {
+    Logger.error("api", "Failed to process lead", {
       error: err.message,
       stack: err.stack,
     });

@@ -6,7 +6,7 @@ export interface BaseRepository<T extends Document> {
   findMany(filter: Partial<T>): Promise<T[]>;
   create(data: Partial<T>): Promise<T>;
   update(id: string, data: Partial<T>): Promise<T | null>;
-  delete(id: string): Promise<boolean>;
+  findOne(filter: Record<string, unknown>): Promise<T | null>;
 }
 
 export abstract class MongoRepository<T extends Document> implements BaseRepository<T> {
@@ -17,11 +17,11 @@ export abstract class MongoRepository<T extends Document> implements BaseReposit
   }
 
   async findOne(filter: Partial<T>): Promise<T | null> {
-    return this.model.findOne(filter as any).exec();
+    return this.model.findOne(filter as Record<string, unknown>).exec();
   }
 
   async findMany(filter: Partial<T>): Promise<T[]> {
-    return this.model.find(filter as any).exec();
+    return this.model.find(filter as Record<string, unknown>).exec();
   }
 
   async create(data: Partial<T>): Promise<T> {

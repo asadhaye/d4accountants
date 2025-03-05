@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import { mockMongoClient, mockDbConnection } from './mocks/db';
+import { mockDbConnection } from './mocks/db';
 import { ConnectionManager } from '../db/connection-manager';
+import type { GlobalMongoose } from '../db/connect';
 
 export async function setupTestDatabase() {
   if (process.env.NODE_ENV !== 'test') {
@@ -8,8 +8,12 @@ export async function setupTestDatabase() {
   }
   
   global.__mongoConnections = Promise.resolve(mockDbConnection);
-  
   return mockDbConnection;
+}
+
+declare global {
+  // eslint-disable-next-line no-var
+  var __mongoConnections: Promise<GlobalMongoose> | undefined;
 }
 
 export async function teardownTestDatabase() {
@@ -17,5 +21,7 @@ export async function teardownTestDatabase() {
   
   const connectionManager = ConnectionManager.getInstance();
   await connectionManager.disconnect();
-  delete global.__mongoConnections;
+  if (global.__mongoConnections) {
+    delete (global as { __mongoConnections?: Promise<GlobalMongoose> }).__mongoConnections;
+  }
 }

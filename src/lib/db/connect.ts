@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-interface GlobalMongoose {
+export interface GlobalMongoose {
   mongoose: Promise<typeof mongoose>;
   mongoClient: Promise<MongoClient>;
 }

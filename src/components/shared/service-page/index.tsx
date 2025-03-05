@@ -1,10 +1,10 @@
 'use client';
 
-import { ServiceLayout } from '@/components/shared/service-layout';
+import { ServiceLayout } from '@/components/shared/service-layout/index';
 import { motion } from "framer-motion";
 import { LeadCaptureForm } from "@/components/features/lead-capture/index";
-import { Logger } from "@/lib/logger/logger";
-import { fadeIn, staggerContainer } from "@/lib/animations/animations";
+import { Logger } from "@/lib/logger/index";
+import { fadeIn, staggerContainer } from "@/lib/animations/index";
 import { CheckCircle } from "lucide-react";
 
 export interface ServicePageProps {
@@ -28,7 +28,7 @@ export function ServicePage({
   imageSrc = "/images/default-service.jpg"
 }: ServicePageProps) {
   const logServiceView = () => {
-    Logger.info("engagement", "view_service_page", {
+    Logger.info("analytics", "view_service_page", {
       label: title,
     });
   };
@@ -44,7 +44,7 @@ export function ServicePage({
         initial="hidden"
         animate="show"
         viewport={{ once: true, amount: 0.25 }}
-        className="container mx-auto px-4 py-12 bg-gradient-to-br from-blue-950/50 via-teal-950/50 to-blue-950/50"
+        className="container mx-auto px-4 py-12"
         onViewportEnter={logServiceView}
       >
         <motion.section variants={fadeIn} className="text-center mb-16">

@@ -1,7 +1,10 @@
-"use client";
+'use client';
 
-import React, { Component } from "react";
-import type { ErrorInfo, ReactNode } from "react";
+import React from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
 
 interface Props {
   children: ReactNode;
@@ -10,41 +13,54 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error: Error | null;
+  error?: Error;
 }
 
-export class ErrorBoundary extends Component<Props, State> {
+export class ErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { hasError: false };
   }
 
   static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error("Error caught by ErrorBoundary:", error, errorInfo);
-    
-    // You could also log to an error reporting service here
-    // Example: reportError(error, errorInfo);
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Uncaught error:', error, errorInfo);
   }
 
-  render(): ReactNode {
+  handleRetry = () => {
+    this.setState({ hasError: false, error: undefined });
+  };
+
+  render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return this.props.fallback || (
-        <div className="p-4 border border-red-300 bg-red-50 rounded-md">
-          <h2 className="text-lg font-semibold text-red-800">Something went wrong</h2>
-          <p className="text-red-600 mt-1">
-            {this.state.error?.message || "An unexpected error occurred"}
-          </p>
-          <button
-            className="mt-3 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-            onClick={() => this.setState({ hasError: false, error: null })}
-          >
-            Try again
-          </button>
+      if (this.props.fallback) {
+        return this.props.fallback;
+      }
+
+      return (
+        <div className="flex min-h-[50vh] items-center justify-center p-4">
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <div className="flex items-center justify-center mb-4">
+                <AlertTriangle className="h-12 w-12 text-error" />
+              </div>
+              <CardTitle className="text-center">Something went wrong</CardTitle>
+              <CardContent>
+                <p className="text-neutral-600 dark:text-neutral-400">
+                  {this.state.error?.message || 'An unexpected error occurred.'}
+                </p>
+              </CardContent>
+            </CardHeader>
+            <CardFooter>
+              <Button onClick={this.handleRetry} className="flex items-center gap-2">
+                <RefreshCw className="h-4 w-4" />
+                Try Again
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       );
     }

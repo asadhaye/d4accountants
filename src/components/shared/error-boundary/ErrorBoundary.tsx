@@ -1,6 +1,7 @@
 'use client';
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component } from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -9,31 +10,24 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { hasError: false };
+  public state: State = {
+    hasError: false
+  };
+
+  public static getDerivedStateFromError(): State {
+    return { hasError: true };
   }
 
-  static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Uncaught error:', error, errorInfo);
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
-  }
-
-  render() {
+  public render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="p-4 rounded-lg bg-red-50 border border-red-200">
-          <h2 className="text-lg font-semibold text-red-800">Something went wrong</h2>
-          <p className="mt-2 text-red-600">{this.state.error?.message}</p>
-        </div>
-      );
+      return this.props.fallback || <h1>Sorry.. there was an error</h1>;
     }
 
     return this.props.children;
